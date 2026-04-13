@@ -249,8 +249,6 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
   .prow{grid-template-columns:1fr 1fr;}
 }
 
-
-
 @media(max-width:900px){
   #deck [style*="grid-template-columns:repeat(3"],
   #deck [style*="grid-template-columns:repeat(4"],
@@ -269,6 +267,74 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
   #deck .dslide [style*="display:flex;align-items:center;justify-content:center;gap:0"]{flex-direction:column!important;}
   #deck [style*="padding:72px 64px"],
   #deck [style*="padding:56px 64px"]{padding:36px 22px!important;}
+}
+
+@media(max-width:768px){
+  /* Hero */
+  .stit{font-size:clamp(18px,6vw,28px)!important;}
+  .hdesc{font-size:13px!important;}
+  .hsub{font-size:13px!important;}
+  .hbtns{flex-direction:column;align-items:center;gap:12px!important;}
+  .btn-gold,.btn-ghost{width:100%;max-width:280px;justify-content:center;}
+  .hstats{flex-wrap:wrap;gap:16px;justify-content:center;}
+
+  /* Stats bar */
+  .s4{grid-template-columns:repeat(2,1fr);gap:10px;}
+
+  /* Sections padding */
+  section{padding:60px 16px!important;}
+  .wrap{padding-left:16px!important;padding-right:16px!important;}
+
+  /* Early Validation */
+  .fgrid{grid-template-columns:1fr!important;gap:12px!important;}
+
+  /* Features cards */
+  .fcard{padding:28px 20px!important;}
+
+  /* Why Now */
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+
+  /* Live Product highlights */
+  .lph{grid-template-columns:repeat(2,1fr)!important;gap:10px;}
+
+  /* Phone mockups - single column */
+  .scr-row{grid-template-columns:1fr!important;max-width:260px!important;margin:0 auto!important;}
+
+  /* How it works */
+  .steps{grid-template-columns:1fr!important;}
+
+  /* Team grid */
+  .team-flip-grid{grid-template-columns:1fr 1fr!important;}
+
+  /* CTA buttons */
+  #cta .tinn > div{flex-direction:column;align-items:center;gap:12px;}
+  .btn-out{width:100%;max-width:280px;justify-content:center;}
+
+  /* Deck carousel */
+  #deck{padding:60px 16px!important;}
+
+  /* Nav */
+  nav{padding:0 16px;}
+  .nlogo{font-size:20px;}
+
+  /* Typography */
+  .eyebrow{font-size:9px;letter-spacing:2px;}
+  .sdsc{font-size:13px;}
+
+  /* Footer */
+  .ftin{flex-direction:column;text-align:center;gap:12px;}
+  .flinks{flex-wrap:wrap;justify-content:center;gap:10px;}
+  .fr{font-size:10px;}
+
+  /* Modal */
+  #mModal > div{padding:30px 20px!important;width:calc(100% - 24px)!important;}
+}
+
+/* Убираем летающих пчёл и кастомный курсор на мобильных */
+@media(pointer:coarse){
+  .bee-el{display:none!important;}
+  #CUR,#CURL{display:none!important;}
+  body{cursor:auto!important;}
 }
 </style>
 </head>
@@ -353,7 +419,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       <button class="lb on" onclick="sL('en')">EN</button>
       <button class="lb" onclick="sL('ru')">RU</button>
     </div>
-    <a href="https://t.me/OTCHive" target="_blank" class="ncta" data-k="ntg">Open in Telegram</a>
+    <a href="https://t.me/OTCHiveBot" target="_blank" class="ncta" data-k="ntg">Open in Telegram</a>
   </div>
 </nav>
 
@@ -366,8 +432,8 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       <p class="hsub" data-k="hsb">Secure any Telegram transaction with smart contracts</p>
       <p class="hdesc" data-k="hd">Non-custodial, on-chain settlement for Telegram-based transactions. Funds move <strong>only via confirmComplete().</strong> No middlemen. No trust required.</p>
       <div class="hbtns">
-        <a href="https://app.otchive.com" target="_blank" class="btn-gold">🐝 <span data-k="hb1">Open Mini App</span></a>
-        <a href="https://app.otchive.com" target="_blank" class="btn-ghost"><span data-k="hb2">View Demo</span> <span class="garr">→</span></a>
+        <a href="https://t.me/OTCHiveBot" target="_blank" class="btn-gold">🐝 <span data-k="hb1">Open Mini App</span></a>
+        <a href="https://t.me/OTCHiveBot" target="_blank" class="btn-ghost"><span data-k="hb2">View Demo</span> <span class="garr">→</span></a>
       </div>
       
     </div>
@@ -513,7 +579,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
     </div>
 
     <div style="text-align:center;margin-top:52px;" class="rv">
-      <a href="https://app.otchive.com" target="_blank" class="btn-gold" style="font-size:11px;padding:14px 34px;">🐝 Open Mini App</a>
+      <a href="https://t.me/OTCHiveBot" target="_blank" class="btn-gold" style="font-size:11px;padding:14px 34px;">🐝 Open Mini App</a>
       <p style="margin-top:14px;font-size:11px;color:var(--mt);font-family:'Orbitron',sans-serif;letter-spacing:2px;">app.otchive.com · v37 Stable · EN/RU</p>
     </div>
   </div>
@@ -775,7 +841,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
   <h2 class="ctat"><span data-k="ct1">Build on</span><br><span class="g" data-k="ct2">TON Escrow Infrastructure.</span></h2>
   <p class="ctas" data-k="csub">Non-custodial. On-chain. Telegram-native. Zero middlemen.</p>
   <div class="ctabs">
-    <a href="https://app.otchive.com" target="_blank" class="btn-gold" style="padding:17px 40px;font-size:12px;">🐝 <span data-k="cb1">Open Mini App</span></a>
+    <a href="https://t.me/OTCHiveBot" target="_blank" class="btn-gold" style="padding:17px 40px;font-size:12px;">🐝 <span data-k="cb1">Open Mini App</span></a>
     <a href="#" onclick="openModal();return false;" class="btn-out" style="margin-right:12px;">📩 <span data-k="cb2">Стать инвестором</span></a><a href="https://github.com/nugamak/OTCHive/raw/main/OTCHive_Whitepaper_v2.8.docx" target="_blank" class="btn-out">📄 Read Whitepaper</a>
   </div>
   <p class="ctameta">Telegram: <a href="https://t.me/OTCHive">@OTCHive</a> · <a href="mailto:info@otchive.com">info@otchive.com</a></p>
@@ -980,12 +1046,15 @@ const CUR=document.getElementById("CUR"),CURL=document.getElementById("CURL");
 let mx=window.innerWidth/2,my=window.innerHeight/2,rx=mx,ry=my;
 document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;CUR.style.left=mx+"px";CUR.style.top=my+"px";});
 (function al(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;CURL.style.left=rx+"px";CURL.style.top=ry+"px";requestAnimationFrame(al);})();
-/* BEE TRAIL */
+/* BEE TRAIL - desktop only */
+if(window.matchMedia('(pointer:fine)').matches){
 const BS=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 52" width="36" height="44"><defs><radialGradient id="bg1" cx="50%" cy="60%" r="55%"><stop offset="0%" stop-color="#FFD166"/><stop offset="50%" stop-color="#F5A825"/><stop offset="100%" stop-color="#C97A10"/></radialGradient><radialGradient id="hg1" cx="45%" cy="38%" r="55%"><stop offset="0%" stop-color="#FFD166"/><stop offset="100%" stop-color="#E8943A"/></radialGradient><radialGradient id="wg1" cx="40%" cy="25%" r="65%"><stop offset="0%" stop-color="rgba(210,235,255,.95)"/><stop offset="100%" stop-color="rgba(140,190,255,.15)"/></radialGradient></defs><ellipse cx="9" cy="18" rx="9" ry="6" fill="url(#wg1)" transform="rotate(-30,9,18)" opacity=".9"/><ellipse cx="8" cy="26" rx="6.5" ry="4" fill="url(#wg1)" transform="rotate(-18,8,26)" opacity=".7"/><ellipse cx="35" cy="18" rx="9" ry="6" fill="url(#wg1)" transform="rotate(30,35,18)" opacity=".9"/><ellipse cx="36" cy="26" rx="6.5" ry="4" fill="url(#wg1)" transform="rotate(18,36,26)" opacity=".7"/><ellipse cx="22" cy="33" rx="9.5" ry="13" fill="url(#bg1)"/><path d="M12.8 26 Q22 24 31.2 26" fill="none" stroke="#1a0800" stroke-width="3.2" opacity=".72" stroke-linecap="round"/><path d="M12.4 31.5 Q22 29.5 31.6 31.5" fill="none" stroke="#1a0800" stroke-width="3.2" opacity=".72" stroke-linecap="round"/><path d="M12.8 37 Q22 35 31.2 37" fill="none" stroke="#1a0800" stroke-width="2.8" opacity=".62" stroke-linecap="round"/><ellipse cx="22" cy="16" rx="8.5" ry="8" fill="url(#hg1)"/><ellipse cx="17.5" cy="14.5" rx="2.8" ry="3.2" fill="#1a0800"/><ellipse cx="26.5" cy="14.5" rx="2.8" ry="3.2" fill="#1a0800"/><circle cx="16.8" cy="13.5" r=".9" fill="rgba(255,255,255,.85)"/><circle cx="25.8" cy="13.5" r=".9" fill="rgba(255,255,255,.85)"/><path d="M19 9 Q15 4.5 11.5 2" stroke="#C97A10" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M25 9 Q29 4.5 32.5 2" stroke="#C97A10" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="11" cy="1.8" r="2.2" fill="#F5A825"/><circle cx="33" cy="1.8" r="2.2" fill="#F5A825"/><path d="M21 46 Q22 50 23 46" stroke="#C97A10" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>`;
 const NB=9;const bees=[];const trail=Array.from({length:NB},()=>({x:-400,y:-400}));
 for(let i=0;i<NB;i++){const el=document.createElement("div");el.className="bee-el";el.style.cssText="position:fixed;pointer-events:none;z-index:99997;";el.innerHTML=BS;document.body.appendChild(el);bees.push(el);}
 let bf=0;
 (function ab(){bf++;trail[0]={x:mx,y:my};for(let i=1;i<NB;i++){trail[i]={x:trail[i].x+(trail[i-1].x-trail[i].x)*.17,y:trail[i].y+(trail[i-1].y-trail[i].y)*.17};}for(let i=0;i<NB;i++){const b=bees[i];const w=Math.sin(bf*.07+i*1.3)*5;const sc=(1-i*.055)*(.83+Math.abs(Math.sin(bf*.1+i*.9))*.17);let rot=0;if(i>0){const dx=trail[i-1].x-trail[i].x,dy=trail[i-1].y-trail[i].y;rot=Math.atan2(dy,dx)*180/Math.PI+90;}b.style.left=trail[i].x+"px";b.style.top=(trail[i].y+w)+"px";b.style.opacity=Math.max(0,(1-i/NB)*.9).toString();b.style.transform=`translate(-50%,-50%) scale(${sc}) rotate(${rot}deg)`;}requestAnimationFrame(ab);})();
+/* END BEE TRAIL */
+}
 /* SCROLL REVEAL */
 const io=new IntersectionObserver(ents=>{ents.forEach(e=>{if(e.isIntersecting)e.target.classList.add("vis");});},{threshold:.08});
 document.querySelectorAll(".rv").forEach(r=>io.observe(r));
