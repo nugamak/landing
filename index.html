@@ -1086,17 +1086,17 @@ function submitInvestor(e){
   // FORMSPREE INTEGRATION
   // 1. Зарегистрируйтесь на formspree.io
   // 2. Создайте форму → получите ID вида "xpwzrqkb"
-  // 3. Замените YOUR_FORM_ID ниже на ваш реальный ID
+  // 3. Замените xjgjvogn ниже на ваш реальный ID
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  const FORMSPREE_ID='YOUR_FORM_ID';
+  const FORMSPREE_ID='xjgjvogn';
   const payload={name,email,investment_amount:amount,message:msg,_subject:'🐝 OTCHive: Новая заявка инвестора от '+name,_replyto:email};
-  if(FORMSPREE_ID!=='YOUR_FORM_ID'){
+  if(FORMSPREE_ID!=='xjgjvogn'){
     fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
     .then(r=>r.json()).then(d=>{if(d.ok||d.next)showSuccess();else showMError(isRu?'Ошибка сервера. Напишите на info@otchive.com':'Server error. Email info@otchive.com');})
     .catch(()=>showMError(isRu?'Нет соединения. Напишите на info@otchive.com':'No connection. Email info@otchive.com'))
     .finally(()=>{btn.disabled=false;btn.style.opacity='1';});
   } else {
-    console.warn('%c⚙️ Formspree не настроен. Замените YOUR_FORM_ID на реальный ID с formspree.io','color:#F5A825');
+    console.warn('%c⚙️ Formspree не настроен. Замените xjgjvogn на реальный ID с formspree.io','color:#F5A825');
     setTimeout(()=>{btn.disabled=false;btn.style.opacity='1';showSuccess();},900);
   }
 }
