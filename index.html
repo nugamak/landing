@@ -24,7 +24,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{background:#080502;color:#F0E6C8;font-family:"Exo 2",sans-serif;overflow-x:hidden;cursor:none;}
+body{background:#080502;color:#F0E6C8;font-family:"Exo 2",sans-serif;overflow-x:hidden;}
+body.cust-cur{cursor:none;}
 #globalHive{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
 :root{--g1:#F5A825;--g2:#E8943A;--g3:#FFD166;--g4:#C97A10;--dk:#080502;--dk2:#0F0A04;--dk3:#1A1006;--mt:#8A7A52;--txt:#F0E6C8;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(245,168,37,.25);border-radius:2px;}
@@ -436,7 +437,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       <p class="hkl" data-k="hkl">OTCHive is not a marketplace. It is an escrow primitive for TON.</p>
       <h1 class="htitle"><span class="g" data-k="ht2">Trustless Escrow</span><br><span data-k="ht3">Infrastructure</span><br><span data-k="ht4">for TON.</span></h1>
       <p class="hsub" data-k="hsb">Secure any Telegram transaction with smart contracts</p>
-      <p class="hdesc" data-k="hd">Non-custodial, on-chain settlement for Telegram-based transactions. Funds move <strong>only via confirmComplete().</strong> No middlemen. No trust required.</p>
+      <p class="hdesc" data-k="hd">Non-custodial, on-chain settlement for Telegram-based transactions. Funds move <strong>only after client confirmation (AcceptWork).</strong> No middlemen. No trust required.</p>
       <div class="hbtns">
         <a href="https://t.me/OTCHiveBot" target="_blank" class="btn-gold">🐝 <span data-k="hb1">Open Mini App</span></a>
         <a href="https://t.me/OTCHiveBot" target="_blank" class="btn-ghost"><span data-k="hb2">View Demo</span> <span class="garr">→</span></a>
@@ -490,7 +491,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       <div class="card-glow-wrap"><div class="fcard" style="text-align:center;padding:52px 36px;">
         <div class="fhicon" style="margin:0 auto 28px;"><svg viewBox="0 0 68 68"><polygon points="34,3 65,20 65,54 34,71 3,54 3,20" fill="rgba(245,168,37,.1)" stroke="#F5A825" stroke-width="1.3"/><polygon points="34,12 56,24 56,48 34,60 12,48 12,24" fill="none" stroke="rgba(245,168,37,.35)" stroke-width=".7"/></svg><div class="fhico">🔒</div></div>
         <div class="ftt" style="font-size:16px;margin-bottom:14px;" data-k="fc1t">Smart Contract Escrow</div>
-        <div class="fds" style="font-size:13px;" data-k="fc1d">Non-custodial, on-chain settlement.<br>Funds locked until <strong style="color:var(--g3);">confirmComplete()</strong>.</div>
+        <div class="fds" style="font-size:13px;" data-k="fc1d">Non-custodial, on-chain settlement.<br>Funds locked until <strong style="color:var(--g3);">AcceptWork</strong>.</div>
       </div></div>
       <div class="card-glow-wrap"><div class="fcard" style="text-align:center;padding:52px 36px;border-top:2px solid rgba(245,168,37,.5);">
         <div class="fhicon" style="margin:0 auto 28px;"><svg viewBox="0 0 68 68"><polygon points="34,3 65,20 65,54 34,71 3,54 3,20" fill="rgba(245,168,37,.1)" stroke="#F5A825" stroke-width="1.3"/><polygon points="34,12 56,24 56,48 34,60 12,48 12,24" fill="none" stroke="rgba(245,168,37,.35)" stroke-width=".7"/></svg><div class="fhico">💬</div></div>
@@ -539,7 +540,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
     <div class="rv">
       <div class="eyebrow" data-k="pseye">Live Product</div>
       <h2 class="stit"><span class="g" data-k="psh1">Ready product.</span> <span data-k="psh2">Not a mockup.</span></h2>
-      <p class="sdsc" data-k="psdesc">Interactive prototype v37 Stable · 12 screens · 9 deal states · RU/EN · TonConnect</p>
+      <p class="sdsc" data-k="psdesc">Live product · 12 screens · 9 deal states · RU/EN · TonConnect</p>
     </div>
 
     <!-- Live Product Highlights -->
@@ -586,7 +587,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
 
     <div style="text-align:center;margin-top:52px;" class="rv">
       <a href="https://t.me/OTCHiveBot" target="_blank" class="btn-gold" style="font-size:11px;padding:14px 34px;">🐝 Open Mini App</a>
-      <p style="margin-top:14px;font-size:11px;color:var(--mt);font-family:'Orbitron',sans-serif;letter-spacing:2px;">app.otchive.com · v37 Stable · EN/RU</p>
+      <p style="margin-top:14px;font-size:11px;color:var(--mt);font-family:'Orbitron',sans-serif;letter-spacing:2px;">app.otchive.com · Live · EN/RU</p>
     </div>
   </div>
 </section>
@@ -596,9 +597,9 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
     <div class="steps rv">
       <div class="card-glow-wrap"><div class="stpbl"><div class="stpc">01</div><div class="stpt" data-k="hs1t">Клиент создаёт задачу</div><div class="stpd" data-k="hs1d">От $10. GRAM/USDT блокируется в смарт-контракте.</div><span class="stpig" data-k="hs1ig">Smart Contract Lock</span></div></div>
       <div class="card-glow-wrap"><div class="stpbl"><div class="stpc">02</div><div class="stpt" data-k="hs2t">Исполнитель принимает</div><div class="stpd" data-k="hs2d">AI-матчинг. Trust Score верифицирован. E2E чат.</div><span class="stpig" data-k="hs2ig">AI Matching</span></div></div>
-      <div class="card-glow-wrap"><div class="stpbl"><div class="stpc">03</div><div class="stpt" data-k="hs3t">Работа принята — деньги переведены</div><div class="stpd" data-k="hs3d">confirmComplete() → автоматический перевод &lt;5 сек.</div><span class="stpig" data-k="hs3ig">Auto Transfer</span></div></div>
+      <div class="card-glow-wrap"><div class="stpbl"><div class="stpc">03</div><div class="stpt" data-k="hs3t">Работа принята — деньги переведены</div><div class="stpd" data-k="hs3d">AcceptWork → автоматический перевод &lt;5 сек.</div><span class="stpig" data-k="hs3ig">Auto Transfer</span></div></div>
     </div>
-    <div style="text-align:center;margin-top:44px;" class="rv"><div style="display:inline-block;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.18);padding:18px 38px;font-family:'Orbitron',sans-serif;font-size:11px;color:var(--g1);letter-spacing:2px;" data-k="escn">🔒 Деньги движутся ТОЛЬКО после подтверждения · TON Blockchain · AES-256</div></div>
+    <div style="text-align:center;margin-top:44px;" class="rv"><div style="display:inline-block;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.18);padding:18px 38px;font-family:'Orbitron',sans-serif;font-size:11px;color:var(--g1);letter-spacing:2px;" data-k="escn">🔒 Деньги движутся ТОЛЬКО после подтверждения · TON Blockchain</div></div>
   </div>
 </section>
 
@@ -980,25 +981,25 @@ ru:{
   hkl:"OTCHive — не маркетплейс. Это escrow-примитив для TON.",
   ht2:"Trustless Escrow",ht3:"Инфраструктура",ht4:"для TON.",
   hsb:"Безопасная любая транзакция в Telegram через смарт-контракты",
-  hd:"Некастодиальные, on-chain расчёты для Telegram-транзакций. Средства движутся <strong>только через confirmComplete().</strong> Без посредников. Без доверия.",
+  hd:"Некастодиальные, on-chain расчёты для Telegram-транзакций. Средства движутся <strong>только после подтверждения клиента (AcceptWork).</strong> Без посредников. Без доверия.",
   hb1:"Открыть Mini App",hb2:"Демо",
   hl1:"Рынок 2025",hl2:"TON кошельков",hl3:"Без эскроу",
   sl1:"Крипто-фриланс рынок 2025",sl2:"Активных TON кошельков",sl3:"P2P сделок без защиты",sl4:"Потери от мошенничества",
   feye:"Возможности",
   ft1:"Всё необходимое для",ft2:"безопасной сделки",
   fd:"Каждая функция устраняет риски крипто-транзакций навсегда.",
-  fc1t:"Smart Contract Escrow",fc1d:"Некастодиальный, on-chain расчёт. Средства разблокируются только через confirmComplete().",
+  fc1t:"Smart Contract Escrow",fc1d:"Некастодиальный, on-chain расчёт. Средства разблокируются только после подтверждения клиента (AcceptWork).",
   fc2t:"Нативно в Telegram",fc2d:"Работает внутри Telegram Mini Apps. TonConnect 2.0 · Без установок.",
   fc3t:"Dispute-free Flow",fc3d:"Средства освобождаются только через смарт-контракт. Без посредников. Без доверия.",
   heye:"Процесс",hwt1:"Три шага до",hwt2:"безопасной сделки",
   hs1t:"Клиент публикует задачу",hs1d:"От $10. GRAM/USDT блокируется в смарт-контракте.",
   hs2t:"Исполнитель принимает",hs2d:"AI-матчинг. Trust Score верифицирован. E2E чат.",
-  hs3t:"Работа принята — деньги переведены",hs3d:"confirmComplete() → автоматический перевод менее 5 сек.",
-  escn:"🔒 Средства движутся ТОЛЬКО после подтверждения клиента · TON Blockchain · AES-256",
+  hs3t:"Работа принята — деньги переведены",hs3d:"AcceptWork → автоматический перевод, обычно за секунды.",
+  escn:"🔒 Средства движутся ТОЛЬКО после подтверждения клиента · TON Blockchain",
   aeye:"Escrow Protection Layer",
   at1:"AI как инфраструктура.",at2:"Не функция — защитный слой.",
   ai1:"Анализ паттернов транзакций в реальном времени. Блокирует мошеннические попытки до блокировки средств.",
-  ai2:"Арбитраж на GPT-4o. Разрешение с уверенностью 90%+ → авто-разблокировка смарт-контракта.",
+  ai2:"Арбитраж на GPT-4o. Высокоуверенные кейсы → авто-разблокировка смарт-контракта; спорные — на ручной разбор.",
   ai3:"Контекстные подсказки на каждом из 9 состояний эскроу. Снижает споры by design.",
   ai4:"Проверка справедливой стоимости эскроу. Верификация рыночной цены для обеих сторон.",
   ai5:"Graph ML обнаружение кластеров мошенников. Anti-Sybil слой для TON кошельков.",
@@ -1011,7 +1012,7 @@ ru:{
   pr1:"Консервативный",pr2:"Базовый MVP",pr3:"Целевой",pr4:"Потенциал",
   pnote:"⚡ Break-even ~150 сделок/день · Цель — месяц 4 после запуска",
   roeye:"Roadmap",rot1:"От MVP до",rot2:"глобального маркетплейса",
-  rm11:"11 категорий + TON эскроу",rm12:"WebSocket чат AES-256",rm13:"3 AI модуля готовы",rm14:"Trust Score v2",
+  rm11:"11 категорий + TON эскроу",rm12:"WebSocket чат (шифрование транспорта)",rm13:"3 AI модуля в разработке",rm14:"Trust Score v2",
   rm21:"7 дополнительных AI модулей",rm22:"Pricing Assist",rm23:"Портфолио, листинги",rm24:"Аудит контрактов",
   rm31:"Smart Matching AI",rm32:"Mobile App",rm33:"EN + RU мультиязык",rm34:"Order Quality Scorer",
   rm41:"Partner API",rm42:"White label",rm43:"Корп. аккаунты",rm44:"DAO управление",
@@ -1048,7 +1049,7 @@ ru:{
   uc2s1:"Средства заблокированы в эскроу",uc2s2:"Работа сдаётся по вехам",uc2s3:"Спор →",uc2s3b:"решён через % разбивку (70/30)",
   uc2outcome:"Справедливый исход без доверенного посредника",uc2tag:"Справедливый исход · Без посредников",
   pseye:"Живой Продукт",psh1:"Готовый продукт.",psh2:"Не макет.",
-  psdesc:"Интерактивный прототип v37 Stable · 12 экранов · 9 состояний · RU/EN · TonConnect",
+  psdesc:"Live · 12 экранов · 9 состояний · RU/EN · TonConnect",
   lph1t:"12 Экранов",lph1d:"Клиент · Исполнитель · Сделка · Чат · Админ",
   lph2t:"9 Состояний",lph2d:"Полный state machine реализован",
   lph3t:"TonConnect 2.0",lph3d:"Реальная авторизация кошелька",
@@ -1071,25 +1072,25 @@ en:{
   hkl:"OTCHive is not a marketplace. It is an escrow primitive for TON.",
   ht2:"Trustless Escrow",ht3:"Infrastructure",ht4:"for TON.",
   hsb:"Secure any Telegram transaction with smart contracts",
-  hd:"Non-custodial, on-chain settlement for Telegram-based transactions. Funds move <strong>only via confirmComplete().</strong> No middlemen. No trust required.",
+  hd:"Non-custodial, on-chain settlement for Telegram-based transactions. Funds move <strong>only after client confirmation (AcceptWork).</strong> No middlemen. No trust required.",
   hb1:"Open Mini App",hb2:"View Demo",
   hl1:"Market 2025",hl2:"TON wallets",hl3:"No escrow",
   sl1:"Crypto freelance market 2025",sl2:"Active TON wallets",sl3:"P2P deals without escrow",sl4:"Lost to fraud per year",
   feye:"Features",
   ft1:"Everything needed for",ft2:"a safe deal",
   fd:"Every feature permanently eliminates risk from crypto transactions.",
-  fc1t:"Smart Contract Escrow",fc1d:"Non-custodial, on-chain settlement. Funds locked until confirmComplete().",
+  fc1t:"Smart Contract Escrow",fc1d:"Non-custodial, on-chain settlement. Funds locked until AcceptWork.",
   fc2t:"Telegram Native",fc2d:"Works inside Telegram Mini Apps. TonConnect 2.0 · No install required.",
   fc3t:"Dispute-free Flow",fc3d:"Funds released only via smart contract. Zero middlemen. Zero trust required.",
   heye:"Process",hwt1:"Three steps to",hwt2:"a safe deal",
   hs1t:"Client posts a task",hs1d:"From $10. GRAM/USDT locked in smart contract.",
   hs2t:"Executor accepts",hs2d:"AI skill matching. Trust Score verified. E2E chat.",
-  hs3t:"Work approved — funds released",hs3d:"confirmComplete() → auto transfer <5 sec.",
-  escn:"🔒 Funds move ONLY after client confirmation · TON Blockchain · AES-256",
+  hs3t:"Work approved — funds released",hs3d:"AcceptWork → auto transfer, usually within seconds.",
+  escn:"🔒 Funds move ONLY after client confirmation · TON Blockchain",
   aeye:"Escrow Protection Layer",
   at1:"AI as Infrastructure.",at2:"Not a feature — a security layer.",
   ai1:"Real-time transaction pattern analysis. Blocks fraudulent escrow attempts before funds lock.",
-  ai2:"GPT-4o arbitration layer. 90%+ confidence resolution → smart contract auto-release.",
+  ai2:"GPT-4o arbitration layer. High-confidence cases → smart contract auto-release; edge cases go to manual review.",
   ai3:"Context-aware guidance at each of 9 escrow states. Reduces disputes by design.",
   ai4:"Market-rate escrow sizing. Fair value verification for both parties.",
   ai5:"Graph ML fraud-cluster detection. Anti-Sybil identity layer for TON wallets.",
@@ -1102,7 +1103,7 @@ en:{
   pr1:"Conservative",pr2:"Base MVP",pr3:"Target",pr4:"Potential",
   pnote:"⚡ Break-even at ~150 deals/day · Target reached Month 4 post-launch",
   roeye:"Roadmap",rot1:"From MVP to",rot2:"global marketplace",
-  rm11:"11 categories + TON escrow",rm12:"WebSocket chat AES-256",rm13:"3 AI modules ready",rm14:"Trust Score v2",
+  rm11:"11 categories + TON escrow",rm12:"WebSocket chat (transport encryption)",rm13:"3 AI modules in progress",rm14:"Trust Score v2",
   rm21:"7 additional AI modules",rm22:"Pricing Assist",rm23:"Portfolio, listings",rm24:"Contract audit",
   rm31:"Smart Matching AI",rm32:"Mobile App",rm33:"EN + RU multilingual",rm34:"Order Quality Scorer",
   rm41:"Partner API",rm42:"White label",rm43:"Corporate accounts",rm44:"DAO governance",
@@ -1137,7 +1138,7 @@ en:{
   uc2s1:"Funds locked in escrow",uc2s2:"Work delivered in milestones",uc2s3:"Dispute →",uc2s3b:"resolved via % split (70/30)",
   uc2outcome:"Fair outcome without trusted middleman",uc2tag:"Fair outcome · No middlemen",
   pseye:"Live Product",psh1:"Ready product.",psh2:"Not a mockup.",
-  psdesc:"Interactive prototype v37 Stable · 12 screens · 9 deal states · RU/EN · TonConnect",
+  psdesc:"Live product · 12 screens · 9 deal states · RU/EN · TonConnect",
   lph1t:"12 Screens Built",lph1d:"Client · Executor · Deal · Chat · Admin",
   lph2t:"9 Deal States",lph2d:"Full state machine implemented",
   lph3t:"TonConnect 2.0",lph3d:"Real wallet auth integrated",
@@ -1176,7 +1177,7 @@ sL("en");
 /* CURSOR */
 const CUR=document.getElementById("CUR"),CURL=document.getElementById("CURL");
 let mx=window.innerWidth/2,my=window.innerHeight/2,rx=mx,ry=my;
-document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;CUR.style.left=mx+"px";CUR.style.top=my+"px";});
+document.addEventListener("mousemove",e=>{if(!document.body.classList.contains('cust-cur'))document.body.classList.add('cust-cur');mx=e.clientX;my=e.clientY;CUR.style.left=mx+"px";CUR.style.top=my+"px";});
 (function al(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;CURL.style.left=rx+"px";CURL.style.top=ry+"px";requestAnimationFrame(al);})();
 /* BEE TRAIL - desktop only */
 if(window.matchMedia('(pointer:fine)').matches){
