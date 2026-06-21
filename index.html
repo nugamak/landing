@@ -437,7 +437,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       <p class="hkl" data-k="hkl">OTCHive is not a marketplace. It is an escrow primitive for TON.</p>
       <h1 class="htitle"><span class="g" data-k="ht2">Trustless Escrow</span><br><span data-k="ht3">Infrastructure</span><br><span data-k="ht4">for TON.</span></h1>
       <p class="hsub" data-k="hsb">Secure any Telegram transaction with smart contracts</p>
-      <p class="hdesc" data-k="hd">Non-custodial, on-chain settlement for Telegram-based transactions. Funds move <strong>only after client confirmation (AcceptWork).</strong> No middlemen. No trust required.</p>
+      <p class="hdesc" data-k="hd">Non-custodial, on-chain settlement for Telegram-based transactions. Funds move <strong>by smart-contract rules: client acceptance, refund, or dispute resolution.</strong> No middlemen. No trust required.</p>
       <div class="hbtns">
         <a href="https://t.me/OTCHiveBot" target="_blank" class="btn-gold">🐝 <span data-k="hb1">Open Mini App</span></a>
         <a href="https://t.me/OTCHiveBot" target="_blank" class="btn-ghost"><span data-k="hb2">View Demo</span> <span class="garr">→</span></a>
@@ -500,8 +500,8 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       </div></div>
       <div class="card-glow-wrap"><div class="fcard" style="text-align:center;padding:52px 36px;">
         <div class="fhicon" style="margin:0 auto 28px;"><svg viewBox="0 0 68 68"><polygon points="34,3 65,20 65,54 34,71 3,54 3,20" fill="rgba(245,168,37,.1)" stroke="#F5A825" stroke-width="1.3"/><polygon points="34,12 56,24 56,48 34,60 12,48 12,24" fill="none" stroke="rgba(245,168,37,.35)" stroke-width=".7"/></svg><div class="fhico">⚡</div></div>
-        <div class="ftt" style="font-size:16px;margin-bottom:14px;" data-k="fc3t">Dispute-free Flow</div>
-        <div class="fds" style="font-size:13px;" data-k="fc3d">Funds released only via smart contract.<br>Zero middlemen. Zero trust required.</div>
+        <div class="ftt" style="font-size:16px;margin-bottom:14px;" data-k="fc3t">Clear dispute path</div>
+        <div class="fds" style="font-size:13px;" data-k="fc3d">Funds released by smart contract.<br>Zero middlemen. Trust-minimized, not trust-free.</div>
       </div></div>
     </div>
   </div>
@@ -599,7 +599,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       <div class="card-glow-wrap"><div class="stpbl"><div class="stpc">02</div><div class="stpt" data-k="hs2t">Исполнитель принимает</div><div class="stpd" data-k="hs2d">AI-матчинг. Trust Score верифицирован. Приватный чат сделки в Telegram.</div><span class="stpig" data-k="hs2ig">AI Matching</span></div></div>
       <div class="card-glow-wrap"><div class="stpbl"><div class="stpc">03</div><div class="stpt" data-k="hs3t">Работа принята — деньги переведены</div><div class="stpd" data-k="hs3d">AcceptWork → автоматический перевод &lt;5 сек.</div><span class="stpig" data-k="hs3ig">On-chain Release</span></div></div>
     </div>
-    <div style="text-align:center;margin-top:44px;" class="rv"><div style="display:inline-block;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.18);padding:18px 38px;font-family:'Orbitron',sans-serif;font-size:11px;color:var(--g1);letter-spacing:2px;" data-k="escn">🔒 Деньги движутся ТОЛЬКО после подтверждения · TON Blockchain</div></div>
+    <div style="text-align:center;margin-top:44px;" class="rv"><div style="display:inline-block;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.18);padding:18px 38px;font-family:'Orbitron',sans-serif;font-size:11px;color:var(--g1);letter-spacing:2px;" data-k="escn">🔒 Деньги движутся по правилам смарт-контракта · TON Blockchain</div></div>
   </div>
 </section>
 
@@ -981,21 +981,21 @@ ru:{
   hkl:"OTCHive — не маркетплейс. Это escrow-примитив для TON.",
   ht2:"Trustless Escrow",ht3:"Инфраструктура",ht4:"для TON.",
   hsb:"Безопасная любая транзакция в Telegram через смарт-контракты",
-  hd:"Некастодиальные, on-chain расчёты для Telegram-транзакций. Средства движутся <strong>только после подтверждения клиента (AcceptWork).</strong> Без посредников. Без доверия.",
+  hd:"Некастодиальные, on-chain расчёты для Telegram-транзакций. Средства движутся <strong>по правилам смарт-контракта: приёмка клиентом, возврат или решение спора.</strong> Без посредников. Доверие минимизировано, не отменено.",
   hb1:"Открыть Mini App",hb2:"Демо",
   hl1:"Рынок 2025",hl2:"TON кошельков",hl3:"Без эскроу",
   sl1:"Крипто-фриланс рынок 2025",sl2:"TON-кошельков в экосистеме",sl3:"P2P сделок без защиты",sl4:"Потери от мошенничества",
   feye:"Возможности",
   ft1:"Всё необходимое для",ft2:"безопасной сделки",
   fd:"Каждая функция снижает риск со стороны контрагента в крипто-сделках.",
-  fc1t:"Smart Contract Escrow",fc1d:"Некастодиальный, on-chain расчёт. Средства разблокируются только после подтверждения клиента (AcceptWork).",
+  fc1t:"Smart Contract Escrow",fc1d:"Некастодиальный, on-chain расчёт. Средства разблокирует смарт-контракт по правилам сделки: приёмка, возврат или решение спора.",
   fc2t:"Нативно в Telegram",fc2d:"Работает внутри Telegram Mini Apps. TonConnect 2.0 · Без установок.",
-  fc3t:"Dispute-free Flow",fc3d:"Средства освобождаются только через смарт-контракт. Без посредников. Без доверия.",
+  fc3t:"Clear dispute path",fc3d:"Средства освобождает смарт-контракт по правилам сделки. Без посредников. Доверие минимизировано, не отменено.",
   heye:"Процесс",hwt1:"Три шага до",hwt2:"безопасной сделки",
   hs1t:"Клиент публикует задачу",hs1d:"От $10. GRAM блокируется в смарт-контракте.",
   hs2t:"Исполнитель принимает",hs2d:"AI-матчинг. Trust Score верифицирован. Приватный чат сделки в Telegram.",
   hs3t:"Работа принята — деньги переведены",hs3d:"AcceptWork → ончейн-выплата, обычно за секунды.",
-  escn:"🔒 Средства движутся ТОЛЬКО после подтверждения клиента · TON Blockchain",
+  escn:"🔒 Средства движутся по правилам смарт-контракта · TON Blockchain",
   aeye:"Escrow Protection Layer",
   at1:"AI как инфраструктура.",at2:"Не функция — более безопасный способ работы.",
   ai1:"Anti-Scam пред-проверка текста заказа через бэкенд. Помечает рискованные заказы для ручной проверки.",
@@ -1072,7 +1072,7 @@ en:{
   hkl:"OTCHive is not a marketplace. It is an escrow primitive for TON.",
   ht2:"Trustless Escrow",ht3:"Infrastructure",ht4:"for TON.",
   hsb:"Secure any Telegram transaction with smart contracts",
-  hd:"Non-custodial, on-chain settlement for Telegram-based transactions. Funds move <strong>only after client confirmation (AcceptWork).</strong> No middlemen. No trust required.",
+  hd:"Non-custodial, on-chain settlement for Telegram-based transactions. Funds move <strong>by smart-contract rules: client acceptance, refund, or dispute resolution.</strong> No middlemen. No trust required.",
   hb1:"Open Mini App",hb2:"View Demo",
   hl1:"Market 2025",hl2:"TON wallets",hl3:"No escrow",
   sl1:"Crypto freelance market 2025",sl2:"TON wallets in the ecosystem",sl3:"P2P deals without escrow",sl4:"Lost to fraud per year",
@@ -1081,12 +1081,12 @@ en:{
   fd:"Every feature reduces counterparty risk in crypto transactions.",
   fc1t:"Smart Contract Escrow",fc1d:"Non-custodial, on-chain settlement. Funds locked until AcceptWork.",
   fc2t:"Telegram Native",fc2d:"Works inside Telegram Mini Apps. TonConnect 2.0 · No install required.",
-  fc3t:"Dispute-free Flow",fc3d:"Funds released only via smart contract. Zero middlemen. Zero trust required.",
+  fc3t:"Clear dispute path",fc3d:"Funds released by smart contract under deal rules. Zero middlemen. Trust-minimized, not trust-free.",
   heye:"Process",hwt1:"Three steps to",hwt2:"a safe deal",
   hs1t:"Client posts a task",hs1d:"From $10. GRAM locked in smart contract.",
   hs2t:"Executor accepts",hs2d:"AI skill matching. Trust Score verified. Private deal chat in Telegram.",
   hs3t:"Work approved — funds released",hs3d:"AcceptWork → on-chain release, usually within seconds.",
-  escn:"🔒 Funds move ONLY after client confirmation · TON Blockchain",
+  escn:"🔒 Funds move by smart-contract rules · TON Blockchain",
   aeye:"Escrow Protection Layer",
   at1:"AI as Infrastructure.",at2:"Not a feature — a safer way to work.",
   ai1:"Anti-Scam pre-check of order text via the backend. Flags risky orders for human review.",
