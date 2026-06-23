@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — OTCHive</title>
+<meta name="description" content="OTCHive Terms of Service — non-custodial escrow infrastructure for TON. Open Beta.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.otchive.com/terms">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
+<style>
+:root{--g1:#F5A825;--g2:#E8943A;--g3:#FFD166;--g4:#C97A10;--dk:#080502;--dk2:#0F0A04;--mt:#8A7A52;--txt:#F0E6C8;--body:#CDBF9C}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dk);color:var(--body);font-family:"Exo 2",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto 0;height:340px;background:radial-gradient(60% 100% at 50% 0%,rgba(245,168,37,.06),transparent 70%);pointer-events:none;z-index:0}
+a{color:var(--g1);text-decoration:none;transition:color .2s}
+a:hover{color:var(--g3)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--g3);outline-offset:3px;border-radius:2px}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;background:rgba(8,5,2,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(245,168,37,.16)}
+.brand{display:flex;align-items:center;gap:12px}
+.hex{width:22px;height:22px;flex-shrink:0;background:linear-gradient(135deg,var(--g2),var(--g3));clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%);box-shadow:0 0 16px rgba(245,168,37,.4)}
+.mark{font-family:"Orbitron",sans-serif;font-weight:900;letter-spacing:3px;font-size:15px;color:var(--g1);text-shadow:0 0 20px rgba(245,168,37,.5)}
+.top a.back{font-family:"Orbitron",sans-serif;font-size:11px;letter-spacing:2px;color:var(--mt)}
+.top a.back:hover{color:var(--g1)}
+.wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:54px 24px 92px}
+.eyebrow{font-family:"Orbitron",sans-serif;font-size:10px;letter-spacing:4px;color:var(--g4);text-transform:uppercase}
+h1.doc{font-family:"Orbitron",sans-serif;font-weight:700;font-size:clamp(26px,5vw,40px);color:var(--g3);text-shadow:0 0 40px rgba(255,209,102,.25);margin:10px 0 10px;line-height:1.15}
+.meta{font-size:13px;color:var(--mt)}
+.callout{position:relative;margin:30px 0;padding:22px 24px;background:linear-gradient(145deg,#140d04,#0f0a03);border:1px solid rgba(245,168,37,.34);clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);box-shadow:0 0 50px rgba(245,168,37,.08),inset 0 0 40px rgba(245,168,37,.03)}
+.callout .ct{font-family:"Orbitron",sans-serif;font-size:12px;letter-spacing:2px;color:var(--g1);margin-bottom:8px;text-transform:uppercase}
+.callout p{color:var(--txt)}
+.toc{margin:28px 0 0;padding:18px 22px;background:rgba(245,168,37,.04);border:1px solid rgba(245,168,37,.14)}
+.toc .tt{font-family:"Orbitron",sans-serif;font-size:11px;letter-spacing:2px;color:var(--mt);margin-bottom:10px}
+.toc ol{columns:2;column-gap:30px;margin:0;padding-left:20px;font-size:13px}
+.toc li{margin-bottom:5px}
+section.s{margin-top:38px;scroll-margin-top:88px}
+section.s h2{font-family:"Orbitron",sans-serif;font-weight:600;font-size:17px;color:var(--g3);margin-bottom:12px;display:flex;gap:12px;align-items:baseline;line-height:1.3}
+section.s h2 .n{font-size:13px;color:var(--g4);font-weight:700;flex-shrink:0}
+section.s h3{font-family:"Orbitron",sans-serif;font-weight:400;font-size:13px;color:var(--g1);margin:18px 0 8px;letter-spacing:.5px}
+section.s p{margin:0 0 12px}
+section.s ul{margin:0 0 12px;list-style:none}
+section.s li{position:relative;padding-left:22px;margin-bottom:8px}
+section.s li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;background:linear-gradient(135deg,var(--g2),var(--g3));clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+strong{color:var(--txt);font-weight:600}
+.lead{font-size:16px;color:var(--txt)}
+footer{position:relative;z-index:1;border-top:1px solid rgba(245,168,37,.16);padding:34px 24px;text-align:center;color:var(--mt);font-size:12px}
+footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;font-family:"Orbitron",sans-serif;font-size:11px;letter-spacing:1px}
+footer .tag{font-style:italic;color:var(--g4);margin-bottom:10px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+@media(max-width:600px){.wrap{padding:40px 18px 70px}.top{padding:13px 16px}.toc ol{columns:1}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="/" class="brand" aria-label="OTCHive home"><span class="hex"></span><span class="mark">OTCHive</span></a>
+  <a href="/" class="back">← BACK TO SITE</a>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow">Legal</p>
+  <h1 class="doc">Terms of Service</h1>
+  <p class="meta">Effective date: <strong>[EFFECTIVE DATE]</strong> · Version 1.0 · Open Beta</p>
+
+  <div class="callout" role="note">
+    <div class="ct">Non-custodial — read first</div>
+    <p>OTCHive never takes custody of your funds. Escrowed value is held by a smart contract on the TON blockchain, controlled by the contract's own rules — not by OTCHive. We cannot move, freeze, or seize your funds; our only on-chain power is to resolve a dispute or trigger a deadline refund as the platform address. You control your wallet and your keys. On-chain transactions are final and irreversible.</p>
+  </div>
+
+  <p class="lead">These Terms of Service ("Terms") govern your use of OTCHive — a non-custodial escrow service for the TON blockchain, delivered as a Telegram Mini App and related websites and bots (the "Service"), operated by [LEGAL ENTITY NAME] ("OTCHive", "we", "us"). By using the Service you agree to these Terms. If you do not agree, do not use the Service.</p>
+
+  <nav class="toc" aria-label="Contents">
+    <div class="tt">Contents</div>
+    <ol>
+      <li><a href="#about">What OTCHive is</a></li>
+      <li><a href="#eligibility">Eligibility</a></li>
+      <li><a href="#wallet">Wallet &amp; account</a></li>
+      <li><a href="#escrow">How escrow works</a></li>
+      <li><a href="#custody">Non-custodial funds</a></li>
+      <li><a href="#fees">Fees &amp; commission</a></li>
+      <li><a href="#premium">Premium &amp; Boost</a></li>
+      <li><a href="#points">Hive Points</a></li>
+      <li><a href="#referrals">Referrals</a></li>
+      <li><a href="#trust">Trust Score</a></li>
+      <li><a href="#disputes">Disputes</a></li>
+      <li><a href="#conduct">Acceptable use</a></li>
+      <li><a href="#beta">Open Beta &amp; "as is"</a></li>
+      <li><a href="#risk">Crypto risk</a></li>
+      <li><a href="#noadvice">No professional advice</a></li>
+      <li><a href="#liability">Limitation of liability</a></li>
+      <li><a href="#suspension">Suspension &amp; termination</a></li>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#law">Governing law</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <section class="s" id="about">
+    <h2><span class="n">1</span> What OTCHive is</h2>
+    <p>OTCHive is escrow <strong>infrastructure</strong>, not a marketplace and not a party to your deal. Two users — a client and an executor — agree on a job and an amount. OTCHive lets the client lock the agreed amount in a single-purpose smart contract on TON, and lets the contract release it to the executor on acceptance, return it to the client on a deadline refund, or split/route it under a dispute resolution. OTCHive does not employ executors, does not vet deliverables, and does not guarantee that any counterparty will perform.</p>
+  </section>
+
+  <section class="s" id="eligibility">
+    <h2><span class="n">2</span> Eligibility</h2>
+    <p>You must be at least 18 years old and legally able to enter contracts. You must not be located in, or use the Service on behalf of anyone in, a jurisdiction where use of the Service or of TON-based assets is prohibited, or where you are subject to sanctions. You are responsible for complying with the laws, tax rules, and licensing requirements that apply to you.</p>
+  </section>
+
+  <section class="s" id="wallet">
+    <h2><span class="n">3</span> Wallet &amp; account</h2>
+    <p>You access the Service through Telegram and connect your own TON wallet. <strong>You control your wallet and private keys; OTCHive never receives, stores, or has access to them.</strong> You are responsible for all activity through your account and wallet, and for keeping your devices and recovery phrase secure. To protect payment verification, binding a wallet requires a cryptographic ownership proof, and the bound wallet can be changed at most once every 7 days.</p>
+  </section>
+
+  <section class="s" id="escrow">
+    <h2><span class="n">4</span> How escrow works</h2>
+    <p>Each deal is its own smart contract on TON. The lifecycle is enforced on-chain:</p>
+    <ul>
+      <li><strong>Funding.</strong> The client deploys and funds the contract from their own wallet with the agreed amount (shown as GRAM on TON at the payment step).</li>
+      <li><strong>Delivery.</strong> The executor marks work started, then submits the work on-chain.</li>
+      <li><strong>Acceptance.</strong> Only after work is submitted can the client accept. On acceptance the contract pays the executor the amount minus the platform commission, sends the commission to the platform address, and returns any remainder to the client.</li>
+      <li><strong>Revision.</strong> The client may request a limited number of revisions before accepting.</li>
+      <li><strong>Refund.</strong> If no accepted work exists, funds can be returned to the client after the deadline (or by the platform).</li>
+      <li><strong>Dispute.</strong> Either party may open a dispute; the platform then resolves it on-chain in favour of the client, the executor, or a split.</li>
+    </ul>
+    <p>For jobs split into milestones, each milestone is its own funded contract and is accepted independently.</p>
+  </section>
+
+  <section class="s" id="custody">
+    <h2><span class="n">5</span> Non-custodial funds</h2>
+    <p><strong>OTCHive is non-custodial. We never hold a balance of your funds.</strong> Escrowed value sits in the per-deal smart contract until the contract's rules release it. OTCHive cannot withdraw your funds to itself, cannot reverse a completed on-chain payment, and cannot pay an executor on your behalf outside the contract. Our only on-chain abilities are to send a dispute resolution or a deadline refund instruction as the platform address. Because settlement is on-chain, <strong>transactions are irreversible</strong> — confirm every detail before you sign.</p>
+  </section>
+
+  <section class="s" id="fees">
+    <h2><span class="n">6</span> Fees &amp; commission</h2>
+    <p>OTCHive charges a platform commission on completed deals, taken by the smart contract from the escrowed amount at payout. Standard tiers are <strong>10%</strong> (standard), <strong>8%</strong> (Trust Score 8.0 or higher), and <strong>7%</strong> (active Premium). Premium takes precedence over the Trust Score discount; discounts do not stack. The applicable rate is determined at funding time and is fixed into that deal's contract. Network gas fees on TON are separate and paid by the party submitting each transaction.</p>
+  </section>
+
+  <section class="s" id="premium">
+    <h2><span class="n">7</span> Premium &amp; Boost</h2>
+    <p><strong>Premium</strong> is an optional paid subscription that lowers your commission tier and unlocks additional features. <strong>Boost</strong> is an optional paid promotion that increases a listing's visibility for a limited period. Prices are shown in the Service at the point of purchase and may be paid in GRAM on TON or, where offered, with Hive Points. Paid features are consumed when activated and, given their digital and on-chain nature, are generally non-refundable except where required by law.</p>
+  </section>
+
+  <section class="s" id="points">
+    <h2><span class="n">8</span> Hive Points</h2>
+    <p>Hive Points are an internal loyalty metric used for engagement and in-product perks. <strong>Hive Points are not money, not a cryptocurrency, and not a token.</strong> They have no monetary value, are not redeemable for cash, are not withdrawable, are not transferable between users, and carry no promise of conversion to any token, airdrop, or future asset. We may adjust how Hive Points are earned or spent at any time. Nothing in the Service constitutes an offer of securities or a promise of financial return.</p>
+  </section>
+
+  <section class="s" id="referrals">
+    <h2><span class="n">9</span> Referrals</h2>
+    <p>The referral programme is currently <strong>first-level (L1) only</strong>. When a user you referred completes a real, paid escrow deal, you may earn a referral reward equal to <strong>15% of the platform commission actually charged on that deal</strong>. Rewards accrue only on genuinely completed deals and at most once per deal. To prevent abuse, no reward is granted for self-referrals, mutual/looped referrals, or deals in which the referrer participated. <strong>During Open Beta, referral rewards are settled manually via support</strong> rather than by automatic withdrawal. Additional referral levels described as "soon" or "planned" are not live and confer no entitlement.</p>
+  </section>
+
+  <section class="s" id="trust">
+    <h2><span class="n">10</span> Trust Score</h2>
+    <p>Trust Score is a reputation metric (0.0–10.0) derived from your activity and reviews. It affects your commission tier (8.0 or higher qualifies for the reduced rate) and how you appear to others. We may recompute or adjust Trust Score to correct errors or abuse. Trust Score is informational and is not a guarantee about any user.</p>
+  </section>
+
+  <section class="s" id="disputes">
+    <h2><span class="n">11</span> Disputes</h2>
+    <p>If a deal goes wrong, either party may open a dispute on the contract. OTCHive acts as arbiter and resolves the dispute on-chain — releasing to the client, to the executor, or as a split — based on the information available. Resolution is at our reasonable discretion and is final on-chain. We may request evidence (such as the submitted work and chat history) to decide. We do not guarantee any particular outcome, and our role as arbiter does not make us a party to the underlying agreement.</p>
+  </section>
+
+  <section class="s" id="conduct">
+    <h2><span class="n">12</span> Acceptable use</h2>
+    <p>You agree not to use the Service to:</p>
+    <ul>
+      <li>buy, sell, or facilitate anything illegal, or launder money or evade sanctions;</li>
+      <li>defraud, scam, impersonate, or deceive another user;</li>
+      <li>transact in stolen goods, malware, weapons, CSAM, or other prohibited content;</li>
+      <li>abuse the rewards, referral, Trust Score, or dispute systems, or manipulate fees;</li>
+      <li>attack, probe, reverse-engineer, or disrupt the Service, contracts, or other users;</li>
+      <li>use bots or automation to circumvent limits, or create accounts to evade a ban.</li>
+    </ul>
+    <p>You are solely responsible for the legality of the goods or services you exchange.</p>
+  </section>
+
+  <section class="s" id="beta">
+    <h2><span class="n">13</span> Open Beta &amp; "as is"</h2>
+    <p>The Service is offered in <strong>Open Beta</strong> and is provided <strong>"as is" and "as available", without warranties of any kind</strong>, express or implied, including merchantability, fitness for a particular purpose, availability, or non-infringement. Beta software may contain bugs, may change, and may be interrupted. Smart contracts, once deployed, behave exactly as their code dictates. Use the Service with amounts you can afford to lose, and verify each transaction before signing.</p>
+  </section>
+
+  <section class="s" id="risk">
+    <h2><span class="n">14</span> Crypto risk</h2>
+    <p>Using blockchain assets carries risk. Token prices are volatile; on-chain transactions are irreversible and may fail or be delayed; smart contracts can contain vulnerabilities; wallets can be compromised; and the regulatory treatment of crypto assets varies and may change. You accept these risks. OTCHive is not responsible for losses arising from market movements, your own transaction errors, lost keys, third-party wallets or networks, or events outside our control.</p>
+  </section>
+
+  <section class="s" id="noadvice">
+    <h2><span class="n">15</span> No professional advice</h2>
+    <p>OTCHive provides software, not financial, investment, legal, tax, or accounting advice. Any in-product helpers, anti-scam checks, AI translation, or informational content are provided for convenience only and may be inaccurate. Decisions you make using the Service are your own.</p>
+  </section>
+
+  <section class="s" id="liability">
+    <h2><span class="n">16</span> Limitation of liability</h2>
+    <p>To the maximum extent permitted by law, OTCHive and its operators will not be liable for any indirect, incidental, special, consequential, or exemplary damages, or for lost profits, lost funds, or lost data, arising from or related to your use of the Service. Because the Service is non-custodial and free or low-cost in Beta, our total aggregate liability for any claim relating to the Service will not exceed the platform commission you actually paid to OTCHive in the three months before the event giving rise to the claim. Some jurisdictions do not allow certain limitations, so parts of this section may not apply to you.</p>
+  </section>
+
+  <section class="s" id="suspension">
+    <h2><span class="n">17</span> Suspension &amp; termination</h2>
+    <p>We may suspend, limit, or terminate access (including issuing temporary or permanent bans) if we reasonably believe you have violated these Terms, abused the Service, or created risk for other users or the platform. Suspension of access does not affect funds already locked in a smart contract, which remain governed by that contract's rules. You may stop using the Service at any time.</p>
+  </section>
+
+  <section class="s" id="changes">
+    <h2><span class="n">18</span> Changes</h2>
+    <p>We may update these Terms as the Service evolves. We will revise the effective date and version above, and material changes will be reflected in the Service. Continued use after an update means you accept the revised Terms.</p>
+  </section>
+
+  <section class="s" id="law">
+    <h2><span class="n">19</span> Governing law</h2>
+    <p>These Terms are governed by the laws of <strong>[JURISDICTION]</strong>, without regard to conflict-of-laws rules. The parties submit to the exclusive jurisdiction of the courts of [JURISDICTION], except where mandatory consumer-protection law gives you the right to bring proceedings elsewhere.</p>
+  </section>
+
+  <section class="s" id="contact">
+    <h2><span class="n">20</span> Contact</h2>
+    <p>Questions about these Terms? Contact us at <a href="mailto:info@otchive.com">info@otchive.com</a> or via <a href="https://t.me/OTCHiveSupport_Bot" target="_blank" rel="noopener">@OTCHiveSupport_Bot</a> on Telegram. See also our <a href="/privacy">Privacy Policy</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <p class="tag">OTCHive is not a marketplace. It is an escrow primitive for TON.</p>
+  <div class="fl">
+    <a href="/">Home</a>
+    <a href="/terms">Terms</a>
+    <a href="/privacy">Privacy</a>
+    <a href="https://t.me/OTCHiveBot" target="_blank" rel="noopener">Telegram</a>
+    <a href="mailto:info@otchive.com">Contact</a>
+  </div>
+  <p>© <span id="yr"></span> [LEGAL ENTITY NAME]. All rights reserved. Non-custodial escrow infrastructure for TON.</p>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

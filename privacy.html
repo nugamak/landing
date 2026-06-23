@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — OTCHive</title>
+<meta name="description" content="OTCHive Privacy Policy — what data we collect and how we use it. Non-custodial escrow on TON.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.otchive.com/privacy">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600&display=swap" rel="stylesheet">
+<style>
+:root{--g1:#F5A825;--g2:#E8943A;--g3:#FFD166;--g4:#C97A10;--dk:#080502;--dk2:#0F0A04;--mt:#8A7A52;--txt:#F0E6C8;--body:#CDBF9C}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dk);color:var(--body);font-family:"Exo 2",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto 0;height:340px;background:radial-gradient(60% 100% at 50% 0%,rgba(245,168,37,.06),transparent 70%);pointer-events:none;z-index:0}
+a{color:var(--g1);text-decoration:none;transition:color .2s}
+a:hover{color:var(--g3)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--g3);outline-offset:3px;border-radius:2px}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;background:rgba(8,5,2,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(245,168,37,.16)}
+.brand{display:flex;align-items:center;gap:12px}
+.hex{width:22px;height:22px;flex-shrink:0;background:linear-gradient(135deg,var(--g2),var(--g3));clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%);box-shadow:0 0 16px rgba(245,168,37,.4)}
+.mark{font-family:"Orbitron",sans-serif;font-weight:900;letter-spacing:3px;font-size:15px;color:var(--g1);text-shadow:0 0 20px rgba(245,168,37,.5)}
+.top a.back{font-family:"Orbitron",sans-serif;font-size:11px;letter-spacing:2px;color:var(--mt)}
+.top a.back:hover{color:var(--g1)}
+.wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:54px 24px 92px}
+.eyebrow{font-family:"Orbitron",sans-serif;font-size:10px;letter-spacing:4px;color:var(--g4);text-transform:uppercase}
+h1.doc{font-family:"Orbitron",sans-serif;font-weight:700;font-size:clamp(26px,5vw,40px);color:var(--g3);text-shadow:0 0 40px rgba(255,209,102,.25);margin:10px 0 10px;line-height:1.15}
+.meta{font-size:13px;color:var(--mt)}
+.callout{position:relative;margin:30px 0;padding:22px 24px;background:linear-gradient(145deg,#140d04,#0f0a03);border:1px solid rgba(245,168,37,.34);clip-path:polygon(14px 0,100% 0,calc(100% - 14px) 100%,0 100%);box-shadow:0 0 50px rgba(245,168,37,.08),inset 0 0 40px rgba(245,168,37,.03)}
+.callout .ct{font-family:"Orbitron",sans-serif;font-size:12px;letter-spacing:2px;color:var(--g1);margin-bottom:8px;text-transform:uppercase}
+.callout p{color:var(--txt)}
+.toc{margin:28px 0 0;padding:18px 22px;background:rgba(245,168,37,.04);border:1px solid rgba(245,168,37,.14)}
+.toc .tt{font-family:"Orbitron",sans-serif;font-size:11px;letter-spacing:2px;color:var(--mt);margin-bottom:10px}
+.toc ol{columns:2;column-gap:30px;margin:0;padding-left:20px;font-size:13px}
+.toc li{margin-bottom:5px}
+section.s{margin-top:38px;scroll-margin-top:88px}
+section.s h2{font-family:"Orbitron",sans-serif;font-weight:600;font-size:17px;color:var(--g3);margin-bottom:12px;display:flex;gap:12px;align-items:baseline;line-height:1.3}
+section.s h2 .n{font-size:13px;color:var(--g4);font-weight:700;flex-shrink:0}
+section.s h3{font-family:"Orbitron",sans-serif;font-weight:400;font-size:13px;color:var(--g1);margin:18px 0 8px;letter-spacing:.5px}
+section.s p{margin:0 0 12px}
+section.s ul{margin:0 0 12px;list-style:none}
+section.s li{position:relative;padding-left:22px;margin-bottom:8px}
+section.s li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;background:linear-gradient(135deg,var(--g2),var(--g3));clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+strong{color:var(--txt);font-weight:600}
+.lead{font-size:16px;color:var(--txt)}
+.tbl{margin:6px 0 14px;border:1px solid rgba(245,168,37,.14)}
+.tbl .row{display:grid;grid-template-columns:200px 1fr;gap:0;border-bottom:1px solid rgba(245,168,37,.1)}
+.tbl .row:last-child{border-bottom:none}
+.tbl .k{padding:11px 16px;font-family:"Orbitron",sans-serif;font-size:11px;letter-spacing:.5px;color:var(--g1);background:rgba(245,168,37,.04);border-right:1px solid rgba(245,168,37,.1)}
+.tbl .v{padding:11px 16px;font-size:14px}
+@media(max-width:560px){.tbl .row{grid-template-columns:1fr}.tbl .k{border-right:none;border-bottom:1px solid rgba(245,168,37,.1)}}
+footer{position:relative;z-index:1;border-top:1px solid rgba(245,168,37,.16);padding:34px 24px;text-align:center;color:var(--mt);font-size:12px}
+footer .fl{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;font-family:"Orbitron",sans-serif;font-size:11px;letter-spacing:1px}
+footer .tag{font-style:italic;color:var(--g4);margin-bottom:10px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+@media(max-width:600px){.wrap{padding:40px 18px 70px}.top{padding:13px 16px}.toc ol{columns:1}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="/" class="brand" aria-label="OTCHive home"><span class="hex"></span><span class="mark">OTCHive</span></a>
+  <a href="/" class="back">← BACK TO SITE</a>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow">Legal</p>
+  <h1 class="doc">Privacy Policy</h1>
+  <p class="meta">Effective date: <strong>[EFFECTIVE DATE]</strong> · Version 1.0 · Open Beta</p>
+
+  <div class="callout" role="note">
+    <div class="ct">Your keys stay yours</div>
+    <p>OTCHive is non-custodial. We never receive or store your private keys or recovery phrase, and we cannot access your wallet's funds. We do process the data needed to run an escrow service — such as your Telegram ID, your public wallet address, and your deal activity — as described below. On-chain data (wallet addresses and transactions) is public on TON and cannot be deleted by anyone.</p>
+  </div>
+
+  <p class="lead">This Privacy Policy explains what information OTCHive ("we", "us"), operated by [LEGAL ENTITY NAME], collects when you use the OTCHive Telegram Mini App, websites, and bots (the "Service"), how we use it, and your choices.</p>
+
+  <nav class="toc" aria-label="Contents">
+    <div class="tt">Contents</div>
+    <ol>
+      <li><a href="#collect">Information we collect</a></li>
+      <li><a href="#notcollect">What we don't collect</a></li>
+      <li><a href="#use">How we use it</a></li>
+      <li><a href="#onchain">On-chain &amp; public data</a></li>
+      <li><a href="#sharing">Sharing &amp; processors</a></li>
+      <li><a href="#cookies">Cookies &amp; local storage</a></li>
+      <li><a href="#retention">Data retention</a></li>
+      <li><a href="#rights">Your rights</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#children">Children</a></li>
+      <li><a href="#intl">International transfers</a></li>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <section class="s" id="collect">
+    <h2><span class="n">1</span> Information we collect</h2>
+    <p>We collect only what the Service needs to operate:</p>
+    <div class="tbl">
+      <div class="row"><div class="k">Telegram identity</div><div class="v">Your Telegram user ID, username, display name, and language, provided by Telegram when you open the Mini App (verified cryptographically).</div></div>
+      <div class="row"><div class="k">Wallet</div><div class="v">Your public TON wallet address and a one-time proof of ownership you sign when connecting. We do <strong>not</strong> receive your keys.</div></div>
+      <div class="row"><div class="k">Linked accounts</div><div class="v">If you choose to connect them, the account ID and username for X (Twitter), Discord, or GitHub, used for verification badges.</div></div>
+      <div class="row"><div class="k">Deal content</div><div class="v">Orders, bids, milestones, submitted work links, reviews, and the chat messages you exchange about a deal.</div></div>
+      <div class="row"><div class="k">On-chain data</div><div class="v">Escrow contract addresses, transaction hashes, and amounts associated with your deals (these are public on TON).</div></div>
+      <div class="row"><div class="k">Profile</div><div class="v">Bio, skills, avatar emoji, portfolio/gig entries, and your notification and privacy settings.</div></div>
+      <div class="row"><div class="k">Usage &amp; device</div><div class="v">Sessions (device, platform, approximate IP, last-seen time), check-in/streak activity, and product analytics events used to operate and improve the Service.</div></div>
+    </div>
+  </section>
+
+  <section class="s" id="notcollect">
+    <h2><span class="n">2</span> What we don't collect</h2>
+    <p>We do <strong>not</strong> collect or have access to your wallet's private keys, seed phrase, or any secret that controls your funds. We do not ask for them, and you should never share them with anyone — including anyone claiming to be OTCHive support.</p>
+  </section>
+
+  <section class="s" id="use">
+    <h2><span class="n">3</span> How we use it</h2>
+    <ul>
+      <li>operate the escrow lifecycle — funding, delivery, acceptance, refunds, and disputes;</li>
+      <li>compute your Trust Score and Hive Points, and apply your commission tier;</li>
+      <li>match clients and executors, and power chat and notifications (in-app and via Telegram);</li>
+      <li>verify wallet ownership and linked accounts, and confirm payments on-chain;</li>
+      <li>detect and prevent fraud, abuse, and policy violations, and enforce limits and bans;</li>
+      <li>provide support, resolve disputes, and maintain, secure, and improve the Service.</li>
+    </ul>
+  </section>
+
+  <section class="s" id="onchain">
+    <h2><span class="n">4</span> On-chain &amp; public data</h2>
+    <p>Escrow runs on the public TON blockchain. <strong>Your wallet address and every related transaction (amounts, timing, contract addresses) are publicly visible and permanent.</strong> Anyone can view them with a block explorer, and neither you nor OTCHive can edit or delete on-chain records. Consider this before linking a wallet you wish to keep private.</p>
+  </section>
+
+  <section class="s" id="sharing">
+    <h2><span class="n">5</span> Sharing &amp; processors</h2>
+    <p><strong>We do not sell your personal data.</strong> We share data only as needed to run the Service, with:</p>
+    <ul>
+      <li><strong>Telegram</strong> — the platform you access the Service through, and our channel for push notifications;</li>
+      <li><strong>The TON network and public RPC/indexing providers</strong> (e.g. toncenter) — to deploy contracts and read/confirm on-chain state;</li>
+      <li><strong>OAuth providers</strong> (X, Discord, GitHub) — only if you connect them, to verify your linked account;</li>
+      <li><strong>Hosting and infrastructure providers</strong> (e.g. Vercel for the web app/landing, Railway for the backend) — to run the Service;</li>
+      <li><strong>Form processing</strong> (Formspree) — only if you submit the contact/inquiry form on the website.</li>
+    </ul>
+    <p>We may also disclose data if required by law, to protect our rights or users, or as part of a business transfer. Other users see what you make visible (your public profile, listings, reviews, and messages within your deals).</p>
+  </section>
+
+  <section class="s" id="cookies">
+    <h2><span class="n">6</span> Cookies &amp; local storage</h2>
+    <p>The Service uses minimal local storage in your browser to remember preferences such as your chosen language and session state. We do not use third-party advertising cookies or cross-site ad tracking.</p>
+  </section>
+
+  <section class="s" id="retention">
+    <h2><span class="n">7</span> Data retention</h2>
+    <p>We keep off-chain data while your account is active and for as long as needed to provide the Service and to meet legal, security, dispute-resolution, and anti-abuse obligations. We may retain certain records (such as ban or fraud signals) longer to protect the platform. On-chain data is permanent and outside our control.</p>
+  </section>
+
+  <section class="s" id="rights">
+    <h2><span class="n">8</span> Your rights</h2>
+    <p>Depending on your location, you may have the right to access, correct, export, or delete your personal data, and to object to or restrict certain processing. We will honour valid requests for the off-chain data we hold, subject to legal and anti-abuse retention. <strong>On-chain data cannot be erased</strong> by us or anyone. To make a request, contact us using the details below.</p>
+  </section>
+
+  <section class="s" id="security">
+    <h2><span class="n">9</span> Security</h2>
+    <p>We protect the Service with cryptographic verification of Telegram sessions, signed proof of wallet ownership, encrypted transport, access controls, and rate limiting. No method of transmission or storage is completely secure, however, and you are responsible for the security of your wallet, keys, and devices.</p>
+  </section>
+
+  <section class="s" id="children">
+    <h2><span class="n">10</span> Children</h2>
+    <p>The Service is not directed to anyone under 18, and we do not knowingly collect data from children. If you believe a minor has used the Service, contact us and we will take appropriate steps.</p>
+  </section>
+
+  <section class="s" id="intl">
+    <h2><span class="n">11</span> International transfers</h2>
+    <p>OTCHive operates online and relies on providers in multiple countries, so your data may be processed outside your country of residence. Where required, we take steps to ensure appropriate safeguards for such transfers.</p>
+  </section>
+
+  <section class="s" id="changes">
+    <h2><span class="n">12</span> Changes</h2>
+    <p>We may update this Policy as the Service evolves. We will update the effective date and version above, and material changes will be reflected in the Service. Continued use after an update means you accept the revised Policy.</p>
+  </section>
+
+  <section class="s" id="contact">
+    <h2><span class="n">13</span> Contact</h2>
+    <p>For privacy questions or to exercise your rights, contact <a href="mailto:info@otchive.com">info@otchive.com</a> or <a href="https://t.me/OTCHiveSupport_Bot" target="_blank" rel="noopener">@OTCHiveSupport_Bot</a> on Telegram. See also our <a href="/terms">Terms of Service</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <p class="tag">OTCHive is not a marketplace. It is an escrow primitive for TON.</p>
+  <div class="fl">
+    <a href="/">Home</a>
+    <a href="/terms">Terms</a>
+    <a href="/privacy">Privacy</a>
+    <a href="https://t.me/OTCHiveBot" target="_blank" rel="noopener">Telegram</a>
+    <a href="mailto:info@otchive.com">Contact</a>
+  </div>
+  <p>© <span id="yr"></span> [LEGAL ENTITY NAME]. All rights reserved. Non-custodial escrow infrastructure for TON.</p>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
