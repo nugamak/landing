@@ -347,6 +347,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
   body{cursor:auto!important;}
 }
 </style>
+<link rel="stylesheet" href="polish.css">
 </head>
 <body>
 <canvas id="globalHive"></canvas>
@@ -356,9 +357,9 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
 <!-- GLOBAL HONEYCOMB BG -->
 
 <!-- INVESTOR MODAL -->
-<div id="iModal" onclick="if(event.target===this)closeModal()" style="display:none;position:fixed;inset:0;z-index:99990;background:rgba(0,0,0,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-items:center;justify-content:center;">
+<div id="iModal" role="dialog" aria-modal="true" aria-labelledby="mTitle" onclick="if(event.target===this)closeModal()" style="display:none;position:fixed;inset:0;z-index:99990;background:rgba(0,0,0,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-items:center;justify-content:center;">
   <div style="background:linear-gradient(145deg,#110D04,#0F0A03);border:1px solid rgba(245,168,37,.38);max-width:500px;width:calc(100% - 32px);padding:44px 40px;position:relative;clip-path:polygon(18px 0%,100% 0%,calc(100% - 18px) 100%,0% 100%);box-shadow:0 0 80px rgba(245,168,37,.12),0 0 160px rgba(245,168,37,.06),inset 0 0 60px rgba(245,168,37,.03);">
-    <button onclick="closeModal()" style="position:absolute;top:14px;right:20px;background:none;border:none;color:rgba(245,168,37,.55);font-size:28px;cursor:pointer;line-height:1;transition:color .2s;" onmouseover="this.style.color='rgba(245,168,37,1)'" onmouseout="this.style.color='rgba(245,168,37,.55)'">&times;</button>
+    <button type="button" onclick="closeModal()" aria-label="Close" style="position:absolute;top:10px;right:14px;min-width:44px;min-height:44px;background:none;border:none;color:rgba(245,168,37,.55);font-size:28px;cursor:pointer;line-height:1;transition:color .2s;" onmouseover="this.style.color='rgba(245,168,37,1)'" onmouseout="this.style.color='rgba(245,168,37,.55)'">&times;</button>
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:30px;">
       <div style="position:relative;flex-shrink:0;">
         <div style="position:absolute;inset:-3px;border-radius:50%;border:2px solid rgba(245,168,37,.65);box-shadow:0 0 18px rgba(245,168,37,.4);pointer-events:none;"></div>
@@ -371,7 +372,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
     </div>
     <h3 id="mTitle" style="font-family:Orbitron,sans-serif;font-size:20px;font-weight:700;color:#FFD166;margin-bottom:8px;text-shadow:0 0 30px rgba(255,209,102,.3);" data-k="mtitle">Become an Investor</h3>
     <p id="mSub" style="font-size:13px;color:#8A7A52;margin-bottom:30px;line-height:1.65;">Fill the form — we will contact you within 24 hours</p>
-    <div id="mSuccess" style="display:none;text-align:center;padding:40px 0;">
+    <div id="mSuccess" role="status" aria-live="polite" style="display:none;text-align:center;padding:40px 0;">
       <div style="font-size:64px;animation:mFloat 3s ease-in-out infinite;display:block;margin-bottom:20px;">🐝</div>
       <div id="mSucTxt" style="font-family:Orbitron,sans-serif;font-size:16px;color:#F5A825;letter-spacing:2px;text-shadow:0 0 20px rgba(245,168,37,.5);">Заявка отправлена!</div>
       <div id="mSucSub" style="font-size:12px;color:#8A7A52;margin-top:10px;letter-spacing:1px;">Мы свяжемся с вами в ближайшее время</div>
@@ -380,11 +381,11 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
     <form id="mForm" onsubmit="submitInvestor(event)" style="display:flex;flex-direction:column;gap:18px;">
       <div>
         <label id="lName" style="display:block;font-family:Orbitron,sans-serif;font-size:9px;letter-spacing:3px;color:rgba(245,168,37,.65);margin-bottom:8px;">NAME *</label>
-        <input id="fName" type="text" required placeholder="Your name" style="width:100%;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.2);color:#F0E6C8;font-family:'Exo 2',sans-serif;font-size:14px;padding:13px 16px;outline:none;transition:border-color .25s,box-shadow .25s;box-sizing:border-box;" onfocus="this.style.borderColor='rgba(245,168,37,.65)';this.style.boxShadow='0 0 16px rgba(245,168,37,.12)'" onblur="this.style.borderColor='rgba(245,168,37,.2)';this.style.boxShadow='none'">
+        <input id="fName" type="text" name="name" autocomplete="name" required placeholder="Ada Lovelace" style="width:100%;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.2);color:#F0E6C8;font-family:'Exo 2',sans-serif;font-size:14px;padding:13px 16px;outline:none;transition:border-color .25s,box-shadow .25s;box-sizing:border-box;" onfocus="this.style.borderColor='rgba(245,168,37,.65)';this.style.boxShadow='0 0 16px rgba(245,168,37,.12)'" onblur="this.style.borderColor='rgba(245,168,37,.2)';this.style.boxShadow='none'">
       </div>
       <div>
         <label id="lEmail" style="display:block;font-family:Orbitron,sans-serif;font-size:9px;letter-spacing:3px;color:rgba(245,168,37,.65);margin-bottom:8px;">EMAIL *</label>
-        <input id="fEmail" type="email" required placeholder="your@email.com" style="width:100%;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.2);color:#F0E6C8;font-family:'Exo 2',sans-serif;font-size:14px;padding:13px 16px;outline:none;transition:border-color .25s,box-shadow .25s;box-sizing:border-box;" onfocus="this.style.borderColor='rgba(245,168,37,.65)';this.style.boxShadow='0 0 16px rgba(245,168,37,.12)'" onblur="this.style.borderColor='rgba(245,168,37,.2)';this.style.boxShadow='none'">
+        <input id="fEmail" type="email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required placeholder="you@example.com" style="width:100%;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.2);color:#F0E6C8;font-family:'Exo 2',sans-serif;font-size:14px;padding:13px 16px;outline:none;transition:border-color .25s,box-shadow .25s;box-sizing:border-box;" onfocus="this.style.borderColor='rgba(245,168,37,.65)';this.style.boxShadow='0 0 16px rgba(245,168,37,.12)'" onblur="this.style.borderColor='rgba(245,168,37,.2)';this.style.boxShadow='none'">
       </div>
       <div>
         <label id="lAmount" style="display:block;font-family:Orbitron,sans-serif;font-size:9px;letter-spacing:3px;color:rgba(245,168,37,.65);margin-bottom:8px;">INVESTMENT AMOUNT</label>
@@ -399,9 +400,9 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       </div>
       <div>
         <label id="lMsg" style="display:block;font-family:Orbitron,sans-serif;font-size:9px;letter-spacing:3px;color:rgba(245,168,37,.65);margin-bottom:8px;">MESSAGE</label>
-        <textarea id="fMsg" rows="3" placeholder="Tell us about yourself or ask a question..." style="width:100%;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.2);color:#F0E6C8;font-family:'Exo 2',sans-serif;font-size:14px;padding:13px 16px;outline:none;resize:vertical;transition:border-color .25s,box-shadow .25s;box-sizing:border-box;" onfocus="this.style.borderColor='rgba(245,168,37,.65)';this.style.boxShadow='0 0 16px rgba(245,168,37,.12)'" onblur="this.style.borderColor='rgba(245,168,37,.2)';this.style.boxShadow='none'"></textarea>
+        <textarea id="fMsg" rows="3" placeholder="Tell us about yourself, or ask a question…" style="width:100%;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.2);color:#F0E6C8;font-family:'Exo 2',sans-serif;font-size:14px;padding:13px 16px;outline:none;resize:vertical;transition:border-color .25s,box-shadow .25s;box-sizing:border-box;" onfocus="this.style.borderColor='rgba(245,168,37,.65)';this.style.boxShadow='0 0 16px rgba(245,168,37,.12)'" onblur="this.style.borderColor='rgba(245,168,37,.2)';this.style.boxShadow='none'"></textarea>
       </div>
-      <div id="mError" style="display:none;background:rgba(220,50,50,.1);border:1px solid rgba(220,80,80,.35);color:#f87171;font-size:12px;padding:11px 15px;line-height:1.5;border-radius:3px;"></div>
+      <div id="mError" role="alert" aria-live="assertive" style="display:none;background:rgba(220,50,50,.1);border:1px solid rgba(220,80,80,.35);color:#f87171;font-size:12px;padding:11px 15px;line-height:1.5;border-radius:3px;"></div>
       <button id="mBtn" type="submit" style="background:linear-gradient(135deg,#E8943A 0%,#F5A825 50%,#FFD166 100%);background-size:200%;animation:gshift 3s ease infinite;color:#080502;font-family:Orbitron,sans-serif;font-size:11px;font-weight:800;letter-spacing:2.5px;padding:16px 32px;border:none;cursor:pointer;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);transition:box-shadow .3s,opacity .2s;text-transform:uppercase;margin-top:4px;position:relative;overflow:hidden;" onmouseover="this.style.boxShadow='0 0 48px rgba(245,168,37,.8)'" onmouseout="this.style.boxShadow='0 0 26px rgba(245,168,37,.48)'">
         <span style="position:absolute;inset:0;background:rgba(255,255,255,.18);transform:translateX(-110%);transition:transform .4s;pointer-events:none;" id="mShine"></span>
         🐝 <span id="mBtnTxt">Submit Request</span>
@@ -411,7 +412,8 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
   </div>
 </div>
 
-<nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Primary">
   <a href="#hero" class="nlogo">
     <div class="nlogo-t">OTC<span>Hive</span></div>
   </a>
@@ -423,14 +425,33 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
     <li><a href="#team" data-k="nt">Team</a></li>
   </ul>
   <div class="nav-r">
-    <div class="lsw">
-      <button class="lb on" onclick="sL('en')">EN</button>
-      <button class="lb" onclick="sL('ru')">RU</button>
+    <button type="button" id="navToggle" class="nav-toggle" aria-expanded="false"
+          aria-controls="navPanel" aria-label="Menu">
+    <span></span><span></span>
+  </button>
+  <div class="lsw">
+      <button type="button" class="lb on" onclick="sL('en')" lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="lb" onclick="sL('ru')" lang="ru" aria-pressed="false">RU</button>
     </div>
     <a href="https://t.me/OTCHiveBot" target="_blank" class="ncta" data-k="ntg">Open in Telegram</a>
   </div>
 </nav>
+<div id="navPanel" class="nav-panel" hidden>
+  <a href="#features" data-k="nf">Features</a>
+  <a href="#screens" data-k="np">Product</a>
+  <a href="#how" data-k="nh">How it Works</a>
+  <a href="#deck" data-k="nd">Deck</a>
+  <a href="#team" data-k="nt">Team</a>
+  <div class="nav-panel-foot">
+    <div class="lsw">
+      <button type="button" class="lb on" onclick="sL('en')" lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="lb" onclick="sL('ru')" lang="ru" aria-pressed="false">RU</button>
+    </div>
+    <a class="ncta" href="https://t.me/OTCHiveBot" target="_blank" rel="noopener" data-k="ntg">Open in Telegram</a>
+  </div>
+</div>
 
+<main id="main">
 <section id="hero">
   <div class="hero-ui">
     <div class="hero-left">
@@ -518,18 +539,18 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
     </div>
     <div class="fgrid rv" style="grid-template-columns:repeat(3,1fr);">
       <div class="card-glow-wrap"><div class="fcard" style="padding:44px 32px;">
-        <div style="font-family:'Orbitron',sans-serif;font-size:13px;color:var(--g1);letter-spacing:2px;margin-bottom:16px;">TELEGRAM</div>
-        <div style="font-size:28px;font-weight:800;color:var(--mt);margin-bottom:8px;">1B+ Users</div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:12px;color:var(--ml);letter-spacing:2.5px;margin-bottom:14px;">TELEGRAM</div>
+        <div style="font-size:32px;font-weight:800;color:var(--txt);margin-bottom:10px;letter-spacing:-.01em;">1B+ Users</div>
         <div style="font-size:13px;color:var(--ml);" data-k="wn1d">= Distribution. Zero install. The platform runs inside an app people already open daily.</div>
       </div></div>
       <div class="card-glow-wrap"><div class="fcard" style="padding:44px 32px;border-top:2px solid rgba(245,168,37,.5);">
-        <div style="font-family:'Orbitron',sans-serif;font-size:13px;color:var(--g1);letter-spacing:2px;margin-bottom:16px;">TON</div>
-        <div style="font-size:28px;font-weight:800;color:var(--mt);margin-bottom:8px;">35M Wallets</div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:12px;color:var(--ml);letter-spacing:2.5px;margin-bottom:14px;">TON</div>
+        <div style="font-size:32px;font-weight:800;color:var(--txt);margin-bottom:10px;letter-spacing:-.01em;">35M Wallets</div>
         <div style="font-size:13px;color:var(--ml);" data-k="wn2d">= Payments. fees from ~$0.01. Mainstream-ready infrastructure for micro-transaction escrow.</div>
       </div></div>
       <div class="card-glow-wrap"><div class="fcard" style="padding:44px 32px;">
-        <div style="font-family:'Orbitron',sans-serif;font-size:13px;color:var(--g1);letter-spacing:2px;margin-bottom:16px;">ESCROW</div>
-        <div style="font-size:28px;font-weight:800;color:var(--mt);margin-bottom:8px;">0 Solutions</div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:12px;color:var(--ml);letter-spacing:2.5px;margin-bottom:14px;">ESCROW</div>
+        <div style="font-size:32px;font-weight:800;color:var(--txt);margin-bottom:10px;letter-spacing:-.01em;">0 Solutions</div>
         <div style="font-size:13px;color:var(--ml);" data-k="wn3d">= Missing layer. No TON-native escrow with Telegram-native UX exists. <strong style="color:var(--g1);">OTCHive fills the gap.</strong></div>
       </div></div>
     </div>
@@ -557,7 +578,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       <div class="phone-wrap">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <img src="assets/phone-1.webp" decoding="async" alt="Trust Score 7.4" class="phone-screen">
+          <img src="assets/phone-1.webp" width="653" height="1280" loading="lazy" decoding="async" alt="Trust Score 7.4" class="phone-screen">
           </div>
         <div class="phone-cap">
           <span class="phone-tag" data-k="ph1tag">⭐ Trust Score</span>
@@ -567,7 +588,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       <div class="phone-wrap">
         <div class="phone-frame phone-featured">
           <div class="phone-notch"></div>
-          <img src="assets/phone-2.webp" decoding="async" alt="Exchange Orders" class="phone-screen">
+          <img src="assets/phone-2.webp" width="653" height="1280" loading="lazy" decoding="async" alt="Exchange Orders" class="phone-screen">
           </div>
         <div class="phone-cap">
           <span class="phone-tag" data-k="ph2tag">🔍 Exchange</span>
@@ -577,7 +598,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       <div class="phone-wrap">
         <div class="phone-frame">
           <div class="phone-notch"></div>
-          <img src="assets/phone-3.webp" decoding="async" alt="Client Orders Escrow" class="phone-screen">
+          <img src="assets/phone-3.webp" width="653" height="1280" loading="lazy" decoding="async" alt="Client Orders Escrow" class="phone-screen">
           </div>
         <div class="phone-cap">
           <span class="phone-tag" data-k="ph3tag">🔒 Escrow Live</span>
@@ -629,56 +650,44 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
       <div id="deckTrack" style="overflow:hidden;position:relative;border:1px solid rgba(245,168,37,.25);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);">
 
         <!-- ── SLIDE 1 ── Cover -->
-        <div class="dslide" style="display:block;"><img src="assets/slide-0.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 1"></div>
+        <div class="dslide" style="display:block;"><img src="assets/slide-0.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 1"></div>
 
         <!-- ── SLIDE 2 ── Problem -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-1.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 2"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-1.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 2"></div>
 
         <!-- ── SLIDE 3 ── Market -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-2.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 3"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-2.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 3"></div>
 
         <!-- ── SLIDE 4 ── Contract Architecture -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-3.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 4"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-3.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 4"></div>
 
         <!-- ── SLIDE 5 ── Trust Score -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-4.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 5"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-4.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 5"></div>
 
         <!-- ── SLIDE 6 ── Product UI -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-5.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 6"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-5.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 6"></div>
 
         <!-- ── SLIDE 7 ── Factory+Deal Architecture -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-6.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 7"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-6.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 7"></div>
 
         <!-- ── SLIDE 8 ── Traction -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-7.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 8"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-7.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 8"></div>
 
         <!-- ── SLIDE 9 ── Impact / TON Ecosystem Value -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-8.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 9"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-8.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 9"></div>
 
         <!-- ── SLIDE 10 ── Roadmap / Sprint -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-9.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 10"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-9.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 10"></div>
 
         <!-- ── SLIDE 11 ── Grant Request -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-10.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 11"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-10.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 11"></div>
 
         <!-- ── SLIDE 12 ── Closing -->
-        <div class="dslide" style="display:none;"><img src="assets/slide-11.webp" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 12"></div>
+        <div class="dslide" style="display:none;"><img src="assets/slide-11.webp" width="1200" height="669" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;" alt="Slide 12"></div>
 
       </div><!-- /deckTrack -->
 
-      <!-- Controls -->
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding:0 4px;">
 
-        <!-- Prev -->
-        <button id="deckPrev" onclick="deckNav(-1)" style="display:flex;align-items:center;gap:8px;background:rgba(245,168,37,.08);border:1px solid rgba(245,168,37,.3);color:#F5A825;font-family:Orbitron,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;padding:12px 22px;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:all .25s;" onmouseover="this.style.background='rgba(245,168,37,.18)'" onmouseout="this.style.background='rgba(245,168,37,.08)'">← PREV</button>
-
-        <!-- Dots + Counter -->
-        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-          <div id="deckDots" style="display:flex;gap:7px;flex-wrap:wrap;justify-content:center;max-width:320px;"></div>
-          <div id="deckCounter" style="font-family:Orbitron,sans-serif;font-size:9px;color:rgba(245,168,37,.55);letter-spacing:3px;">1 / 12</div>
-        </div>
-
-      </div><!-- /deckTrack -->
 
       <!-- Controls -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding:0 4px;">
@@ -714,20 +723,25 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
   const dots=[];
   for(let i=0;i<total;i++){
     const d=document.createElement('button');
-    d.style.cssText='width:22px;height:4px;border:none;cursor:pointer;transition:all .3s;border-radius:2px;padding:0;';
-    d.style.background=i===0?'#F5A825':'rgba(245,168,37,.22)';
+    d.type='button'; d.className='deck-dot';
+    d.setAttribute('aria-label','Slide '+(i+1)+' of '+total);
+    d.setAttribute('aria-current',i===0?'true':'false');
+    d.appendChild(document.createElement('span'));
     d.addEventListener('click',()=>goTo(i));
     dotsWrap.appendChild(d);
     dots.push(d);
   }
+  slides.forEach((s,i)=>{
+    s.setAttribute('role','group');
+    s.setAttribute('aria-roledescription','slide');
+    s.setAttribute('aria-label',(i+1)+' of '+total);
+  });
   function goTo(n){
     slides[cur].style.display='none';
-    dots[cur].style.background='rgba(245,168,37,.22)';
-    dots[cur].style.width='22px';
+    dots[cur].setAttribute('aria-current','false');
     cur=(n+total)%total;
     slides[cur].style.display='block';
-    dots[cur].style.background='#F5A825';
-    dots[cur].style.width='34px';
+    dots[cur].setAttribute('aria-current','true');
     counter.textContent=(cur+1)+' / '+total;
   }
   window.deckNav=function(dir){goTo(cur+dir);};
@@ -747,8 +761,6 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
     track.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
     track.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40)deckNav(d>0?1:-1);},{passive:true});
   }
-  // init dot width
-  dots[0].style.width='34px';
 })();
 </script>
 
@@ -953,6 +965,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
   </div>
   <p class="ctameta">Telegram: <a href="https://t.me/OTCHive">@OTCHive</a> · <a href="mailto:info@otchive.com">info@otchive.com</a></p>
 </section>
+</main>
 
 <footer>
   <div style="width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(245,168,37,.2) 30%,rgba(245,168,37,.2) 70%,transparent);margin-bottom:26px;"></div>
@@ -1156,7 +1169,12 @@ en:{
 }
 };
 function sL(l){
-  document.querySelectorAll(".lb").forEach(b=>b.classList.toggle("on",b.textContent.toLowerCase()===l));
+  document.querySelectorAll(".lb").forEach(b=>{
+    const on=b.textContent.trim().toLowerCase()===l;
+    b.classList.toggle("on",on);
+    b.setAttribute("aria-pressed",on?"true":"false");
+  });
+  document.documentElement.lang=l;
   document.querySelectorAll("[data-k]").forEach(el=>{const v=TR[l][el.getAttribute("data-k")];if(v!==undefined)el.innerHTML=v;});
   const ru=l==='ru';
   document.getElementById('mTitle').textContent=ru?'Стать инвестором':'Become an Investor';
@@ -1198,10 +1216,58 @@ const sio=new IntersectionObserver(ents=>{ents.forEach(e=>{if(!e.isIntersecting)
 const sbEl=document.querySelector(".sbar");if(sbEl)sio.observe(sbEl);
 /* NAV GLITCH */
 const nl=document.querySelector(".nlogo-t");
-if(nl)setInterval(()=>{nl.style.textShadow=`${(Math.random()*4-2).toFixed(1)}px 0 rgba(245,168,37,.9),${(Math.random()*4-2).toFixed(1)}px 0 rgba(232,148,58,.6),0 0 26px rgba(245,168,37,.7)`;setTimeout(()=>{nl.style.textShadow="0 0 22px rgba(245,168,37,.5)";},90);},4200);
+const _rm=window.matchMedia("(prefers-reduced-motion: reduce)");
+if(nl&&!_rm.matches)setInterval(()=>{nl.style.textShadow=`${(Math.random()*4-2).toFixed(1)}px 0 rgba(245,168,37,.9),${(Math.random()*4-2).toFixed(1)}px 0 rgba(232,148,58,.6),0 0 26px rgba(245,168,37,.7)`;setTimeout(()=>{nl.style.textShadow="0 0 22px rgba(245,168,37,.5)";},90);},4200);
 /* MODAL */
-function openModal(){document.getElementById('iModal').style.display='flex';setTimeout(()=>document.getElementById('iModal').classList.add('mOpen'),10);document.body.style.overflow='hidden';}
-function closeModal(){const m=document.getElementById('iModal');m.style.display='none';m.classList.remove('mOpen');document.body.style.overflow='';resetModal();}
+let _modalReturn=null;
+function _focusables(m){return [...m.querySelectorAll('button,input,select,textarea,a[href]')].filter(e=>!e.disabled&&e.offsetParent!==null);}
+function openModal(){
+  const m=document.getElementById('iModal');
+  _modalReturn=document.activeElement;
+  m.style.display='flex';
+  setTimeout(()=>{m.classList.add('mOpen');const f=_focusables(m)[1]||_focusables(m)[0];if(f)f.focus();},10);
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  const m=document.getElementById('iModal');
+  if(m.style.display==='none')return;
+  m.style.display='none';m.classList.remove('mOpen');document.body.style.overflow='';
+  resetModal();
+  if(_modalReturn&&_modalReturn.focus)_modalReturn.focus();
+  _modalReturn=null;
+}
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Tab')return;
+  const m=document.getElementById('iModal');
+  if(!m||m.style.display!=='flex')return;
+  const f=_focusables(m); if(!f.length)return;
+  const first=f[0],last=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+});
+
+/* Mobile navigation: the link list is hidden below 900px, so this panel is
+   the only route to the deck, product and team on a phone. */
+(function(){
+  const btn=document.getElementById('navToggle');
+  const panel=document.getElementById('navPanel');
+  if(!btn||!panel)return;
+  const setOpen=o=>{
+    btn.setAttribute('aria-expanded',o?'true':'false');
+    panel.hidden=!o;
+    if(o){const a=panel.querySelector('a');if(a)a.focus();}
+  };
+  btn.addEventListener('click',()=>setOpen(panel.hidden));
+  panel.addEventListener('click',e=>{if(e.target.tagName==='A')setOpen(false);});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'&&!panel.hidden){setOpen(false);btn.focus();}
+  });
+  document.addEventListener('click',e=>{
+    if(panel.hidden)return;
+    if(!panel.contains(e.target)&&!btn.contains(e.target))setOpen(false);
+  });
+  window.addEventListener('resize',()=>{if(window.innerWidth>900&&!panel.hidden)setOpen(false);});
+})();
 function resetModal(){document.getElementById('mForm').style.display='flex';document.getElementById('mSuccess').style.display='none';document.getElementById('mError').style.display='none';['fName','fEmail','fMsg'].forEach(id=>{document.getElementById(id).value='';});document.getElementById('fAmount').value='';const btn=document.getElementById('mBtn');btn.disabled=false;btn.style.opacity='1';const isRu=document.querySelector('.lb.on')&&document.querySelector('.lb.on').textContent==='RU';document.getElementById('mBtnTxt').textContent=isRu?'Отправить заявку':'Submit Request';}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 function submitInvestor(e){

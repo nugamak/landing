@@ -1,0 +1,258 @@
+/* ============================================================================
+   OTCHive — design QA pass
+   Loaded after the inline <style> so equal-specificity rules win.
+   The OTCHive identity is unchanged: graphite and gold, Orbitron display,
+   hexagonal geometry. These rules fix defects and hierarchy, not the look.
+   ========================================================================== */
+
+:root{
+  /* --ml was used 15 times and never defined, so every muted caption fell back
+     to inherited body colour. The type hierarchy had collapsed into one flat
+     register of light. Both tones measured against the page ink #080502:
+     --mt 6.9:1, --ml 5.2:1 — past WCAG AA for normal text. */
+  --mt:#A89468;
+  --ml:#8E8060;
+
+  /* Motion: exponential ease-out only, no bounce. */
+  --e-out:cubic-bezier(.22,1,.36,1);
+  --t-fast:140ms;
+  --t-base:220ms;
+}
+
+html{color-scheme:dark;}
+
+/* The fixed 64px navigation was covering every in-page anchor target. */
+:target, section[id]{scroll-margin-top:88px;}
+
+/* ── focus ──────────────────────────────────────────────────────────────
+   outline:none sat on four form controls with no replacement, leaving
+   keyboard users with no visible focus anywhere on the page. */
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:2px solid var(--g3);
+  outline-offset:3px;
+  border-radius:2px;
+}
+#iModal input:focus-visible,#iModal select:focus-visible,#iModal textarea:focus-visible{
+  outline:2px solid var(--g3); outline-offset:2px;
+}
+.skip-link{
+  position:absolute; left:16px; top:-64px; z-index:1000;
+  padding:12px 20px; background:var(--g1); color:#0A0703;
+  font-family:"Orbitron",sans-serif; font-size:12px; font-weight:700;
+  letter-spacing:2px; text-decoration:none;
+  transition:top var(--t-fast) var(--e-out);
+}
+.skip-link:focus{top:12px;}
+
+/* ── hero ───────────────────────────────────────────────────────────────
+   Five typographic registers stacked before the CTA — badge, all-caps
+   kicker, headline, italic all-caps subline, paragraph — each competing at
+   similar weight. The headline should win outright; everything else steps
+   back so the proposition reads in one glance. */
+.hkl{
+  font-size:10px; letter-spacing:2.4px; opacity:.62;
+  color:var(--mt); font-weight:600; max-width:60ch;
+  margin-inline:auto; margin-bottom:18px;
+  text-wrap:balance; line-height:1.7;
+}
+.hsub{
+  font-style:normal; text-transform:none; letter-spacing:.01em;
+  font-size:15px; color:var(--ml); font-weight:400;
+  text-shadow:none; margin-bottom:14px;
+}
+.htitle{font-size:clamp(30px,4.0vw,56px); letter-spacing:-.015em;}
+h1,h2,h3,.htitle,.stit{text-wrap:balance;}
+p,.hdesc,.fds,.sdsc{text-wrap:pretty;}
+.hdesc{max-width:56ch; margin-inline:auto;}
+
+/* The honeycomb canvas runs hot right behind the headline. A soft well of
+   shadow under the text keeps the pattern without letting it compete. */
+#hero::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(58% 46% at 50% 44%,
+    rgba(8,5,2,.88) 0%, rgba(8,5,2,.62) 45%, rgba(8,5,2,0) 78%);
+}
+/* .hero-ui is position:absolute; inset:0 and centres the block. Overriding
+   it to relative broke that centring and pushed the badge under the nav, so
+   only the z-index is raised here. */
+.hero-ui{z-index:10;}
+/* Content sits above the scrim without changing how the hero is laid out. */
+#hero > *:not(::before){position:relative;}
+
+/* Secondary CTA read as disabled grey text next to a solid gold button. */
+.btn-ghost{
+  color:var(--txt); font-weight:500; padding:12px 6px;
+  border-bottom:1px solid rgba(245,168,37,.30);
+  transition:color var(--t-base) var(--e-out),
+             border-color var(--t-base) var(--e-out);
+}
+.btn-ghost:hover,.btn-ghost:focus-visible{
+  color:var(--g1); border-bottom-color:var(--g1);
+}
+
+/* ── type scale ─────────────────────────────────────────────────────────
+   Four label sizes sat within 2px of each other (9, 10, 11, 13) and read as
+   one blurred step. Pull them onto distinct rungs and lift the floor. */
+.eyebrow{font-size:11px; letter-spacing:4px;}
+.sbl,.hl{font-size:11px; letter-spacing:1.6px; color:var(--ml);}
+.fds,.stpd,.sdsc{font-size:15px;}
+.lphd{font-size:13px;}
+.sbn,.hn,.stpc{font-variant-numeric:tabular-nums;}
+.fds,.stpd{max-width:46ch; margin-inline:auto;}
+@media(max-width:768px){
+  .fds,.stpd,.lphd,.tfc-back-bio{font-size:14px;}
+  .sbl,.hl,.eyebrow{font-size:11px;}
+}
+
+/* ── touch targets ──────────────────────────────────────────────────────*/
+.lb{min-height:44px; min-width:52px; padding:0 16px;}
+@media(pointer:fine){ .lb{min-height:36px;} }
+.flinks a,.ctameta a{display:inline-block; padding-block:10px;}
+.tfc-link{padding:10px 14px;}
+button,a,input,select,textarea,summary{touch-action:manipulation;}
+html{-webkit-tap-highlight-color:rgba(245,168,37,.18);}
+
+/* ── explicit transitions ───────────────────────────────────────────────
+   transition:all was on eight controls; listing properties keeps the
+   compositor on transform and opacity and stops unrelated values animating. */
+.ncta{transition:background-color var(--t-base) var(--e-out),
+                color var(--t-base) var(--e-out),
+                box-shadow var(--t-base) var(--e-out);}
+.btn-out{transition:background-color var(--t-base) var(--e-out),
+                    border-color var(--t-base) var(--e-out),
+                    color var(--t-base) var(--e-out);}
+.lb,.deck-btn{transition:background-color var(--t-fast) var(--e-out),
+                          color var(--t-fast) var(--e-out),
+                          border-color var(--t-fast) var(--e-out);}
+.phone-frame{transition:transform 320ms var(--e-out), box-shadow 320ms var(--e-out);}
+
+/* ── product screenshots ────────────────────────────────────────────────
+   Frames were styled 9/19 while the screenshots are 653x1280, so object-fit
+   cover had been silently cropping the top and bottom of every screen.
+   height:auto is required or the width/height attributes win over the ratio. */
+.phone-screen{height:auto; aspect-ratio:653 / 1280; object-fit:cover;}
+img[width][height]{max-width:100%;}
+
+/* ── deck dots ──────────────────────────────────────────────────────────*/
+.deck-dot{width:30px; height:44px; padding:0; border:0; background:none;
+          cursor:pointer; display:grid; place-items:center;}
+.deck-dot > span{display:block; width:22px; height:4px; border-radius:2px;
+  background:rgba(245,168,37,.24);
+  transition:background-color var(--t-fast) var(--e-out), width var(--t-base) var(--e-out);}
+.deck-dot[aria-current="true"] > span{width:34px; background:var(--g1);}
+.deck-dot:hover > span{background:rgba(245,168,37,.55);}
+
+/* ── mobile navigation ──────────────────────────────────────────────────
+   Below 900px the link list was display:none with no replacement, so the
+   deck, product and team were unreachable on every phone and tablet. */
+.nav-toggle{display:none; position:relative; width:44px; height:44px;
+  padding:0; border:0; background:none; cursor:pointer; margin-right:4px;}
+.nav-toggle span{position:absolute; left:12px; width:20px; height:1.5px;
+  background:var(--g1);
+  transition:transform var(--t-base) var(--e-out);}
+.nav-toggle span:first-child{top:19px;}
+.nav-toggle span:last-child{top:24px;}
+.nav-toggle[aria-expanded="true"] span:first-child{transform:translateY(2.5px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] span:last-child{transform:translateY(-2.5px) rotate(-45deg);}
+.nav-panel{
+  position:fixed; top:64px; left:0; right:0; z-index:499;
+  background:rgba(6,4,2,.97);
+  -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(245,168,37,.22);
+  padding:8px 18px max(18px, env(safe-area-inset-bottom));
+  display:flex; flex-direction:column;
+}
+.nav-panel[hidden]{display:none;}
+.nav-panel a{
+  font-family:"Orbitron",sans-serif; font-size:13px; font-weight:600;
+  letter-spacing:2.5px; text-transform:uppercase; color:var(--txt);
+  text-decoration:none; padding:16px 4px;
+  border-bottom:1px solid rgba(245,168,37,.10);
+}
+.nav-panel a:last-child{border-bottom:0;}
+.nav-panel a:hover,.nav-panel a:focus-visible{color:var(--g1);}
+@media(max-width:900px){ .nav-toggle{display:grid;} }
+
+/* ── safe areas ─────────────────────────────────────────────────────────*/
+nav{padding-left:max(52px, env(safe-area-inset-left));
+    padding-right:max(52px, env(safe-area-inset-right));}
+@media(max-width:900px){
+  nav{padding-left:max(18px, env(safe-area-inset-left));
+      padding-right:max(18px, env(safe-area-inset-right));}
+}
+footer{padding-bottom:max(28px, env(safe-area-inset-bottom));}
+
+/* ── reduced motion ─────────────────────────────────────────────────────
+   Eight infinite keyframe loops plus a logo glitch timer ran regardless of
+   the preference. */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  .btn-gold{background-position:0 50% !important;}
+  .scroll-ind,.bdot,.garr{animation:none !important; opacity:.75;}
+}
+
+/* Remaining transition:all declarations, made explicit. */
+.tpl{transition:color var(--t-base) var(--e-out),
+                border-color var(--t-base) var(--e-out),
+                background-color var(--t-base) var(--e-out);}
+.card-glow-wrap,.fcard{transition:border-color var(--t-base) var(--e-out),
+                                   background-color var(--t-base) var(--e-out),
+                                   transform var(--t-base) var(--e-out);}
+
+/* Inline links inside prose were 12px tall targets. Padding lifts the hit
+   area without moving the visual line. */
+.ctameta a,.flinks a,footer a,.hdesc a,.fds a{display:inline-block; padding-block:8px;}
+@media(pointer:coarse){ .ctameta a,.flinks a,footer a{padding-block:12px;} }
+
+/* The primary nav links sit in a bare <ul>, so they never picked up the
+   padding rules above; 12px was the full hit target. */
+.nav-ul a{display:inline-block; padding-block:12px;}
+.nav-ul{align-items:center;}
+.nlogo{display:inline-flex; align-items:center; padding-block:11px;}
+.tfc-link{display:inline-flex; align-items:center; min-height:36px;}
+/* The two remaining transition:all live on the modal's inline-styled buttons. */
+#iModal button{transition:background-color var(--t-base) var(--e-out),
+                          border-color var(--t-base) var(--e-out),
+                          color var(--t-base) var(--e-out),
+                          opacity var(--t-base) var(--e-out) !important;}
+
+/* The hero column is centred in 100vh; with a fixed 64px bar on top the
+   optical centre sits lower than the geometric one. */
+.hero-left{padding-top:64px;}
+@media(max-height:760px){
+  .hero-left{padding-top:48px;}
+  .hdesc{margin-bottom:24px;}
+}
+
+/* ── mobile nav bar ─────────────────────────────────────────────────────
+   At 390px the bar had to hold logo, menu button, language switch and the
+   Telegram CTA; the CTA was pushed off the right edge. Below 900px the bar
+   keeps only the logo and the menu, and everything else moves into the
+   panel where it has room to be a proper target. */
+@media(max-width:900px){
+  nav .lsw,
+  nav .ncta{display:none;}
+  .nav-panel .lsw,
+  .nav-panel .ncta{display:flex;}
+  .nav-toggle{display:grid; margin-left:auto;}
+}
+.nav-panel-foot{
+  display:flex; align-items:center; gap:14px;
+  padding-top:16px; margin-top:6px;
+  border-top:1px solid rgba(245,168,37,.14);
+}
+.nav-panel-foot .ncta{margin-left:auto;}
+.nav-panel .lsw{display:flex;}
+
+/* The plate is busier on a phone relative to the type size. */
+@media(max-width:900px){
+  #hero::before{
+    background:radial-gradient(76% 42% at 50% 46%,
+      rgba(8,5,2,.93) 0%, rgba(8,5,2,.74) 52%, rgba(8,5,2,.15) 86%);
+  }
+}
