@@ -50,14 +50,14 @@ html{color-scheme:dark;}
    similar weight. The headline should win outright; everything else steps
    back so the proposition reads in one glance. */
 .hkl{
-  font-size:10px; letter-spacing:2.4px; opacity:.62;
+  font-size:var(--fs-micro); letter-spacing:2.4px; opacity:.62;
   color:var(--mt); font-weight:600; max-width:60ch;
   margin-inline:auto; margin-bottom:18px;
   text-wrap:balance; line-height:1.7;
 }
 .hsub{
   font-style:normal; text-transform:none; letter-spacing:.01em;
-  font-size:15px; color:var(--ml); font-weight:400;
+  font-size:var(--fs-body); color:var(--ml); font-weight:400;
   text-shadow:none; margin-bottom:14px;
 }
 .htitle{font-size:clamp(30px,4.0vw,56px); letter-spacing:-.015em;}
@@ -95,8 +95,8 @@ p,.hdesc,.fds,.sdsc{text-wrap:pretty;}
    one blurred step. Pull them onto distinct rungs and lift the floor. */
 .eyebrow{font-size:11px; letter-spacing:4px;}
 .sbl,.hl{font-size:11px; letter-spacing:1.6px; color:var(--ml);}
-.fds,.stpd,.sdsc{font-size:15px;}
-.lphd{font-size:13px;}
+.fds,.stpd,.sdsc{font-size:var(--fs-body);}
+.lphd{font-size:var(--fs-label);}
 .sbn,.hn,.stpc{font-variant-numeric:tabular-nums;}
 .fds,.stpd{max-width:46ch; margin-inline:auto;}
 @media(max-width:768px){
@@ -164,7 +164,7 @@ img[width][height]{max-width:100%;}
 }
 .nav-panel[hidden]{display:none;}
 .nav-panel a{
-  font-family:"Orbitron",sans-serif; font-size:13px; font-weight:600;
+  font-family:"Orbitron",sans-serif; font-size:var(--fs-label); font-weight:600;
   letter-spacing:2.5px; text-transform:uppercase; color:var(--txt);
   text-decoration:none; padding:16px 4px;
   border-bottom:1px solid rgba(245,168,37,.10);
@@ -255,4 +255,255 @@ footer{padding-bottom:max(28px, env(safe-area-inset-bottom));}
     background:radial-gradient(76% 42% at 50% 46%,
       rgba(8,5,2,.93) 0%, rgba(8,5,2,.74) 52%, rgba(8,5,2,.15) 86%);
   }
+}
+
+/* ============================================================================
+   AUDIT PASS 2 — design system
+   ========================================================================== */
+
+:root{
+  /* ── type scale ──────────────────────────────────────────────────────
+     The page was using 22 distinct sizes between 7px and 56px, several of
+     them a single pixel apart. That is noise, not hierarchy. These eight
+     rungs cover everything; the floor is 11px because 7, 8 and 9px text
+     appeared 24 times and none of it was legible. */
+  --fs-display:clamp(30px, 4.0vw, 56px);
+  --fs-h2:clamp(26px, 2.8vw, 38px);
+  --fs-h3:22px;
+  --fs-lead:18px;
+  --fs-body:16px;
+  --fs-small:14px;
+  --fs-label:12px;
+  --fs-micro:11px;
+
+  /* ── spacing ─────────────────────────────────────────────────────────
+     Sections ran at either 120px or 72px with nothing distinguishing which
+     got which, so the page rhythm read as accidental. Two deliberate steps. */
+  --sp-section:clamp(84px, 9vh, 120px);
+  --sp-section-lg:clamp(104px, 12vh, 152px);
+
+  /* ── controls ────────────────────────────────────────────────────────
+     btn-gold alone rendered at 41, 43 and 48px tall. One control height. */
+  --ctl-h:46px;
+  --ctl-h-sm:38px;
+}
+
+/* ── one control height everywhere ──────────────────────────────────────*/
+.btn-gold,.btn-out{
+  min-height:var(--ctl-h);
+  padding-block:0;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:var(--fs-label);
+}
+/* Scoped to the wide layout: below 900px this button lives in the menu panel,
+   and an unscoped display:inline-flex here re-showed it in the bar. */
+@media(min-width:901px){
+  nav .ncta{
+    min-height:var(--ctl-h-sm);
+    display:inline-flex; align-items:center;
+    padding:0 22px;
+    font-size:var(--fs-micro);
+  }
+}
+.nav-panel .ncta{
+  min-height:var(--ctl-h); align-items:center;
+  padding:0 22px; font-size:var(--fs-micro);
+}
+.deck-btn{min-height:var(--ctl-h-sm); display:inline-flex; align-items:center;}
+
+/* ── type floor: nothing below 11px, nothing below 12px on touch ───────*/
+.aist,.ctameta,.eyebrow,.hl,.lb,.pc,.phone-tag,.pnote,.rmq,.scw,
+.stpig,.tfc-link,.tfc-role,.tfc-tag,.tlbl{font-size:var(--fs-micro);}
+.eyebrow{font-size:var(--fs-label); letter-spacing:4px;}
+.tfc-role{font-size:var(--fs-label);}
+@media(max-width:900px){
+  .aist,.ctameta,.pc,.phone-tag,.pnote,.rmq,.scw,.stpig,
+  .tfc-link,.tfc-role,.tfc-tag,.tlbl{font-size:var(--fs-label);}
+}
+
+/* ── section rhythm ─────────────────────────────────────────────────────*/
+#features,#screens,#how,#deck,#team{
+  padding-block:var(--sp-section-lg) !important;
+}
+section.z1:not(#features):not(#screens):not(#how):not(#deck):not(#team):not(#cta){
+  padding-block:var(--sp-section) !important;
+}
+#cta{padding-block:var(--sp-section-lg) !important;}
+@media(max-width:768px){
+  #features,#screens,#how,#deck,#team,#cta,
+  section.z1{padding-inline:20px !important;}
+}
+
+/* ── colour: collapse the one-off tints onto the tokens ────────────────
+   Fourteen text colours were in use, several of them the same hue at .75,
+   .80 and .85 alpha. Opacity variants of one token read as three colours. */
+.hdesc,.sdsc,.trsub,.ctas{color:var(--txt); opacity:.82;}
+.fds,.stpd,.lphd{color:var(--mt); opacity:1;}
+
+/* ── mobile product section ─────────────────────────────────────────────
+   Three full-height phone frames stacked vertically added about 1,300px of
+   scroll on a phone for three screenshots. A swipeable row shows the same
+   thing in one screen and reads as a product, not a slideshow of images. */
+@media(max-width:768px){
+  .scr-row{
+    display:grid; grid-auto-flow:column; grid-auto-columns:76%;
+    gap:16px; overflow-x:auto; overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;
+    padding-inline:20px; margin-inline:-20px;
+    scrollbar-width:none;
+  }
+  .scr-row::-webkit-scrollbar{display:none;}
+  .scr-row > *{scroll-snap-align:center; min-width:0;}
+  .phone-frame{max-width:100%;}
+}
+
+/* ── mobile menu icon ───────────────────────────────────────────────────
+   At 390px the two bars sat 5px apart and read as one thick line. */
+.nav-toggle span:first-child{top:17px;}
+.nav-toggle span:last-child{top:26px;}
+.nav-toggle[aria-expanded="true"] span:first-child{transform:translateY(4.5px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] span:last-child{transform:translateY(-4.5px) rotate(-45deg);}
+
+
+/* The final CTA and hero buttons carried their own padding, which beat the
+   component rule on specificity and left three button heights on one page. */
+#cta .btn-gold,#cta .btn-out,.hbtns .btn-gold,.hbtns .btn-out,
+.ctabtns .btn-gold,.ctabtns .btn-out{
+  padding-block:0 !important;
+  min-height:var(--ctl-h) !important;
+}
+
+/* ── Trust Score scale ───────────────────────────────────────────────────
+   Was four equal cards, which read as four products rather than one 0-10
+   measure, and carried the only saturated red and green on the page. The
+   pattern here follows the tier/meter components on 21st.dev, rebuilt in this
+   project's own HTML and tokens rather than pasted as React.
+   The bar is aria-hidden behind one label; the legend carries the real text. */
+.tscale{max-width:860px; margin:0 auto;}
+.tscale-track{
+  position:relative; height:12px; margin-bottom:22px;
+  background:rgba(245,168,37,.07);
+  border:1px solid rgba(245,168,37,.16);
+}
+.tscale-seg{
+  position:absolute; top:0; bottom:0;
+  left:var(--from); width:calc(var(--to) - var(--from));
+  background:linear-gradient(90deg,
+    rgba(138,106,50,.55), rgba(245,168,37,.85));
+  opacity:.34;
+  transition:opacity var(--t-base) var(--e-out);
+}
+.tscale-seg:nth-child(2){opacity:.52;}
+.tscale-seg:nth-child(3){opacity:.74;}
+.tscale-seg:nth-child(4){opacity:1;}
+.tscale-tick{
+  position:absolute; top:-6px; bottom:-6px; width:1px;
+  background:rgba(245,168,37,.42);
+}
+.tscale-legend{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  list-style:none; margin:0; padding:0; gap:1px;
+  background:rgba(245,168,37,.12);
+}
+.tscale-legend li{
+  background:var(--dk);
+  padding:20px 16px;
+  display:flex; flex-direction:column; gap:6px;
+  border-top:2px solid transparent;
+}
+/* the top tier is the one worth aiming at, so it is the one that is marked */
+.tscale-legend li:last-child{border-top-color:var(--g1);}
+.tl-name{
+  font-family:"Orbitron",sans-serif; font-size:var(--fs-label);
+  font-weight:800; letter-spacing:2px; text-transform:uppercase;
+  color:var(--mt);
+}
+.tscale-legend li:nth-child(3) .tl-name{color:var(--txt);}
+.tscale-legend li:last-child .tl-name{color:var(--g1);}
+.tl-range{font-size:var(--fs-label); color:var(--ml); font-variant-numeric:tabular-nums;}
+@media(max-width:700px){
+  .tscale-legend{grid-template-columns:repeat(2,1fr);}
+  .tscale-track{margin-bottom:18px;}
+}
+
+/* ── hero: five registers down to four ───────────────────────────────────
+   The italic caps line and the paragraph were two separate voices saying
+   overlapping things. Setting them as one block leaves the copy intact and
+   gives the headline the stage. */
+.hero-left .hsub{
+  font-size:var(--fs-body);
+  color:var(--txt); opacity:.74;
+  margin-bottom:6px; letter-spacing:0;
+}
+.hero-left .hdesc{margin-top:0;}
+@media(min-width:1100px){
+  .hero-left .hsub{max-width:56ch;}
+}
+
+/* ── section intros ─────────────────────────────────────────────────────
+   The gold pass made the wall bright enough that small type sitting directly
+   on it lost contrast — headings survived on size and weight, the supporting
+   lines did not. Cards already carry their own backing; these centred intro
+   blocks had none. A soft well rather than a black box, so the hive stays
+   visible around the words. */
+section .wrap > .rv:first-child{position:relative;}
+section .wrap > .rv:first-child::before{
+  content:""; position:absolute; z-index:-1;
+  left:50%; top:50%; transform:translate(-50%,-50%);
+  /* 118% of the container overflowed the viewport at 768 and gave the
+     document a horizontal scrollbar. Capped against the viewport instead. */
+  width:min(920px, 96vw); height:calc(100% + 120px);
+  background:radial-gradient(58% 52% at 50% 50%,
+    rgba(8,5,2,.92) 0%, rgba(8,5,2,.74) 52%, rgba(8,5,2,0) 82%);
+  pointer-events:none;
+}
+/* These carry inline color:var(--ml), which beats a class rule. At 12px over
+   a lit plate that measured 4.6:1 — passing, but only just. */
+section .wrap p.trsub,
+section .wrap p.sdsc,
+#cta p.ctas{color:var(--txt) !important; opacity:.86;}
+
+/* ── HIVE environment ───────────────────────────────────────────────────
+   The video is the world the page sits inside. It stays below the cell
+   canvas, which stays below every pixel of content. */
+#hiveEnv{
+  position:fixed; inset:0; z-index:-2;
+  overflow:hidden; background:#060403;
+  pointer-events:none;
+}
+.hive-env-vid{
+  width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  opacity:0;
+  transition:opacity 900ms var(--e-out);
+}
+/* Only shown once it can actually be scrubbed; until then the cell wall holds
+   the page and nothing flickers. */
+#hiveEnv[data-state="live"] .hive-env-vid{opacity:1;}
+#hiveEnv[data-state="poster"]{
+  background-image:url("media/hive-env-poster.webp");
+  background-size:cover; background-position:center;
+}
+#globalHive{z-index:-1;}
+
+/* Readability: the plate is busier than the canvas wall was, so the content
+   column keeps a well of shadow under it. Not a flat black sheet — the hive
+   stays visible everywhere the words are not. */
+#hiveEnv::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(6,4,3,.86) 0%, rgba(6,4,3,.42) 18%,
+                            rgba(6,4,3,.42) 82%, rgba(6,4,3,.88) 100%),
+    radial-gradient(72% 60% at 50% 50%, rgba(6,4,3,0) 0%, rgba(6,4,3,.70) 100%);
+}
+@media(max-width:900px){
+  #hiveEnv::after{
+    background:
+      linear-gradient(180deg, rgba(6,4,3,.90) 0%, rgba(6,4,3,.62) 16%,
+                              rgba(6,4,3,.62) 84%, rgba(6,4,3,.92) 100%),
+      radial-gradient(86% 58% at 50% 50%, rgba(6,4,3,.18) 0%, rgba(6,4,3,.80) 100%);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .hive-env-vid{display:none;}
 }
