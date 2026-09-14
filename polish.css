@@ -489,19 +489,27 @@ section .wrap p.sdsc,
 /* Readability: the plate is busier than the canvas wall was, so the content
    column keeps a well of shadow under it. Not a flat black sheet — the hive
    stays visible everywhere the words are not. */
+/* Measured: the video changes by 47 units per pixel across a full scroll, but
+   the first version of this scrim let only 3.2 of that reach the screen — it
+   was eating 93% of the motion and the environment read as static black.
+   Darkening is now concentrated where type actually sits (the top bar, the
+   centre column, the footer) and released everywhere else. */
 #hiveEnv::after{
   content:""; position:absolute; inset:0;
   background:
-    linear-gradient(180deg, rgba(6,4,3,.86) 0%, rgba(6,4,3,.42) 18%,
-                            rgba(6,4,3,.42) 82%, rgba(6,4,3,.88) 100%),
-    radial-gradient(72% 60% at 50% 50%, rgba(6,4,3,0) 0%, rgba(6,4,3,.70) 100%);
+    linear-gradient(180deg, rgba(6,4,3,.82) 0%, rgba(6,4,3,.14) 16%,
+                            rgba(6,4,3,.14) 84%, rgba(6,4,3,.84) 100%),
+    radial-gradient(46% 62% at 50% 50%, rgba(6,4,3,.58) 0%,
+                                        rgba(6,4,3,.30) 58%, rgba(6,4,3,0) 100%);
 }
 @media(max-width:900px){
+  /* the phone shows the poster, not the video, so this only has to protect
+     type over a still image */
   #hiveEnv::after{
     background:
-      linear-gradient(180deg, rgba(6,4,3,.90) 0%, rgba(6,4,3,.62) 16%,
-                              rgba(6,4,3,.62) 84%, rgba(6,4,3,.92) 100%),
-      radial-gradient(86% 58% at 50% 50%, rgba(6,4,3,.18) 0%, rgba(6,4,3,.80) 100%);
+      linear-gradient(180deg, rgba(6,4,3,.88) 0%, rgba(6,4,3,.38) 14%,
+                              rgba(6,4,3,.38) 86%, rgba(6,4,3,.90) 100%),
+      radial-gradient(70% 60% at 50% 50%, rgba(6,4,3,.52) 0%, rgba(6,4,3,.20) 100%);
   }
 }
 @media(prefers-reduced-motion:reduce){
