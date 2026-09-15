@@ -82,14 +82,12 @@
     if (ready || !scrubbable()) return;
     ready = true;
     layer.dataset.state = 'live';
-    if (global.HiveCells) global.HiveCells.setResponseMode(true);
     loop();
   }
 
   function teardown() {
     ready = false;
     layer.dataset.state = 'off';
-    if (global.HiveCells) global.HiveCells.setResponseMode(false);
     if (raf) { cancelAnimationFrame(raf); raf = 0; }
   }
 
@@ -133,39 +131,45 @@
     vid.load();
   }
 
-  /* Measured: fetching this on load pulled 11.6 MB before the visitor had done
-     anything, and someone who reads the hero and leaves paid all of it for a
-     background they never scrolled. The environment only means something once
-     scrolling starts, so the fetch waits for the first sign of intent — or a
-     couple of seconds of dwell, whichever comes first. */
-  var armed = false;
-  function arm() {
-    if (armed) return;
-    armed = true;
-    ['scroll', 'wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (ev) {
-      global.removeEventListener(ev, arm, { passive: true });
-    });
-    clearTimeout(dwell);
-    start();
-  }
-  var dwell;
-  function watch() {
-    ['scroll', 'wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (ev) {
-      global.addEventListener(ev, arm, { passive: true });
-    });
-    dwell = setTimeout(arm, 2200);
-    /* already scrolled on load — a refresh partway down the page */
-    if (docProgress() > 0.001) arm();
+  /* The page opens on the hive, so the fetch starts at once. The poster is
+     the clip's own first frame, painted as the layer's background, so the
+     first thing drawn is already the environment — there is nothing else
+     behind it and nothing to swap in later. */
+  if (doc.readyState === 'complete') start();
+  else global.addEventListener('load', start);
+
+  /* The hive answers the pointer with a soft light. No cell geometry: the
+     honeycomb lives in the footage, and any grid drawn on top of it lines up
+     with nothing. */
+  var glow = layer.querySelector('.hive-glow');
+  if (glow && !reduce.matches && !global.matchMedia('(pointer: coarse)').matches) {
+    var gx = -9999, gy = -9999, cx = -9999, cy = -9999, gOn = 0, gTarget = 0;
+    var CONTENT = 'nav,.hero-left,.wrap,footer,#iModal,.fcard,.sb,.tfc,.phone-frame,.dslide';
+    var tick = 0;
+    doc.addEventListener('mousemove', function (ev) {
+      gx = ev.clientX; gy = ev.clientY; gTarget = 1;
+    }, { passive: true });
+    doc.addEventListener('mouseout', function () { gTarget = 0; }, { passive: true });
+    (function paint(now) {
+      requestAnimationFrame(paint);
+      if (gTarget && now - tick > 100) {
+        tick = now;
+        var el = doc.elementFromPoint(gx, gy);
+        /* dimmed over anything the visitor is reading */
+        gTarget = (el && el.closest && el.closest(CONTENT)) ? 0.22 : 1;
+      }
+      cx += (gx - cx) * 0.12;
+      cy += (gy - cy) * 0.12;
+      gOn += (gTarget - gOn) * 0.07;
+      if (gOn < 0.004) { glow.style.opacity = '0'; return; }
+      glow.style.opacity = gOn.toFixed(3);
+      glow.style.transform = 'translate3d(' + (cx - 260) + 'px,' + (cy - 260) + 'px,0)';
+    })(0);
   }
 
-  if (doc.readyState === 'complete') watch();
-  else global.addEventListener('load', watch);
-
-  /* Crossing the breakpoint swaps the cut rather than switching the layer off. */
-  var rt;
   global.addEventListener('resize', function () {
     clearTimeout(rt);
-    rt = setTimeout(function () { if (!failed && armed) start(); }, 200);
+    rt = setTimeout(function () { if (!failed) start(); }, 200);
   }, { passive: true });
 
   global.HiveEnv = {

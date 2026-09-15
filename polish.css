@@ -481,14 +481,16 @@ section .wrap p.sdsc,
    the page and nothing flickers. */
 #hiveEnv[data-state="live"] .hive-env-vid{opacity:1;}
 /* only reached if the video never becomes scrubbable */
-#hiveEnv[data-state="poster"]{
+/* The poster is the clip's first frame and is always the layer's base, so the
+   page opens on the hive itself rather than on anything drawn. */
+#hiveEnv{
   background-image:url("media/hive-env-poster.webp");
   background-size:cover; background-position:center;
 }
 @media(max-width:900px){
-  #hiveEnv[data-state="poster"]{background-image:url("media/hive-env-mobile-poster.webp");}
+  #hiveEnv{background-image:url("media/hive-env-mobile-poster.webp");}
 }
-#globalHive{z-index:-1;}
+
 
 /* Readability: the plate is busier than the canvas wall was, so the content
    column keeps a well of shadow under it. Not a flat black sheet — the hive
@@ -519,3 +521,15 @@ section .wrap p.sdsc,
 @media(prefers-reduced-motion:reduce){
   .hive-env-vid{display:none;}
 }
+
+/* pointer light — one div, no canvas, no grid */
+.hive-glow{
+  position:absolute; top:0; left:0;
+  width:520px; height:520px; border-radius:50%;
+  opacity:0; pointer-events:none;
+  mix-blend-mode:screen;
+  will-change:transform, opacity;
+  background:radial-gradient(closest-side,
+    rgba(255,196,104,.30), rgba(245,168,37,.12) 42%, rgba(245,168,37,0) 72%);
+}
+@media(prefers-reduced-motion:reduce){ .hive-glow{display:none;} }

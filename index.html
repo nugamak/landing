@@ -351,6 +351,7 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
 </head>
 <body>
 <div id="hiveEnv" aria-hidden="true" data-state="off">
+  <div class="hive-glow"></div>
   <video class="hive-env-vid" muted playsinline preload="none"
          disablepictureinpicture
          data-wide="media/hive-env.mp4"
@@ -358,7 +359,6 @@ footer{border-top:1px solid rgba(245,168,37,.12);padding:36px 52px;background:rg
          data-narrow="media/hive-env-mobile.mp4"
          data-narrow-poster="media/hive-env-mobile-poster.webp"></video>
 </div>
-<canvas id="globalHive"></canvas>
 <div id="CUR"></div>
 <div id="CURL"></div>
 
@@ -1318,8 +1318,6 @@ function showSuccess(){
 }
 function showMError(txt){document.getElementById('mError').textContent=txt;document.getElementById('mError').style.display='block';const btn=document.getElementById('mBtn');btn.disabled=false;btn.style.opacity='1';const isRu=document.querySelector('.lb.on')&&document.querySelector('.lb.on').textContent==='RU';document.getElementById('mBtnTxt').textContent=isRu?'Отправить заявку':'Submit Request';}
 </script>
-
-<script src="hive-cells.js" defer></script>
 <script src="hive-env.js" defer></script>
 </body>
 </html>
