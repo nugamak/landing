@@ -133,14 +133,39 @@
     vid.load();
   }
 
-  if (doc.readyState === 'complete') start();
-  else global.addEventListener('load', start);
+  /* Measured: fetching this on load pulled 11.6 MB before the visitor had done
+     anything, and someone who reads the hero and leaves paid all of it for a
+     background they never scrolled. The environment only means something once
+     scrolling starts, so the fetch waits for the first sign of intent — or a
+     couple of seconds of dwell, whichever comes first. */
+  var armed = false;
+  function arm() {
+    if (armed) return;
+    armed = true;
+    ['scroll', 'wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (ev) {
+      global.removeEventListener(ev, arm, { passive: true });
+    });
+    clearTimeout(dwell);
+    start();
+  }
+  var dwell;
+  function watch() {
+    ['scroll', 'wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (ev) {
+      global.addEventListener(ev, arm, { passive: true });
+    });
+    dwell = setTimeout(arm, 2200);
+    /* already scrolled on load — a refresh partway down the page */
+    if (docProgress() > 0.001) arm();
+  }
+
+  if (doc.readyState === 'complete') watch();
+  else global.addEventListener('load', watch);
 
   /* Crossing the breakpoint swaps the cut rather than switching the layer off. */
   var rt;
   global.addEventListener('resize', function () {
     clearTimeout(rt);
-    rt = setTimeout(function () { if (!failed) start(); }, 200);
+    rt = setTimeout(function () { if (!failed && armed) start(); }, 200);
   }, { passive: true });
 
   global.HiveEnv = {

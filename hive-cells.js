@@ -249,6 +249,9 @@
   function draw() {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     if (responseMode) { drawResponse(); return; }
+    /* The plates are built off the critical path now, so a frame can arrive
+       before they exist. Without this guard drawImage throws on undefined. */
+    if (!plateBase || !vignette) return;
     /* one composite of pre-baked structure: no filters, no gradients */
     ctx.globalAlpha = 1;
     ctx.drawImage(plateBase, 0, 0);
@@ -381,8 +384,16 @@
     cv.style.width = W + 'px';
     cv.style.height = H + 'px';
     build();
-    buildPlates();
-    draw();
+    /* Painting every cell into the offscreen plates was a 153ms blocking task
+       on startup, ahead of LCP, for a wall that the environment video replaces
+       about a second later. Paint a flat ground immediately and do the real
+       work when the main thread is free. */
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.fillStyle = '#060403';
+    ctx.fillRect(0, 0, cv.width, cv.height);
+    var run = function () { buildPlates(); draw(); };
+    if (window.requestIdleCallback) window.requestIdleCallback(run, { timeout: 600 });
+    else setTimeout(run, 1);
   }
 
   if (!coarse.matches) {
