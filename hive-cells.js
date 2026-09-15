@@ -330,13 +330,12 @@
       var a = near * near * pulse * 0.55;
       if (a < 0.012) continue;
       var g = c.r * 2.4;
+      /* Glow only. The edge strokes drawn here came from this canvas's own
+         cell grid, which has nothing to do with the honeycomb in the video —
+         so they appeared as gold outlines floating over cells that are not
+         there. A soft light has no geometry to get wrong. */
       ctx.globalAlpha = a;
       ctx.drawImage(glowSprite, c.x - g / 2, c.y - g / 2, g, g);
-      ctx.globalAlpha = Math.min(0.7, a * 1.5);
-      ctx.lineWidth = Math.max(2, c.r * 0.07);
-      ctx.strokeStyle = 'rgba(' + HOT + ',0.9)';
-      ctx.lineCap = 'round';
-      strokeEdge(c, c.lightEdge);
     }
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 1;

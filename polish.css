@@ -480,9 +480,13 @@ section .wrap p.sdsc,
 /* Only shown once it can actually be scrubbed; until then the cell wall holds
    the page and nothing flickers. */
 #hiveEnv[data-state="live"] .hive-env-vid{opacity:1;}
+/* only reached if the video never becomes scrubbable */
 #hiveEnv[data-state="poster"]{
   background-image:url("media/hive-env-poster.webp");
   background-size:cover; background-position:center;
+}
+@media(max-width:900px){
+  #hiveEnv[data-state="poster"]{background-image:url("media/hive-env-mobile-poster.webp");}
 }
 #globalHive{z-index:-1;}
 

@@ -110,11 +110,25 @@
     if (!doc.hidden && ready && !raf) loop();
   });
 
-  /* Small screens get the poster: a second video decoder plus the page's own
-     media is not a trade worth making on a phone. */
+  /* A phone is portrait, so object-fit:cover on the 1920x996 landscape cut
+     shows only about a quarter of the frame width — a different picture from
+     the one on a desktop, and a still one at that. The narrow cut is a
+     portrait crop of the same footage at 3.6 MB, so the background is both
+     consistent and scrubbable on a phone. */
+  var applied = '';
+  function pick() {
+    var k = narrow.matches ? 'narrow' : 'wide';
+    if (applied === k) return false;
+    applied = k;
+    vid.poster = vid.dataset[k + 'Poster'] || '';
+    vid.src = vid.dataset[k];
+    return true;
+  }
+
   function start() {
-    if (narrow.matches) { layer.dataset.state = 'poster'; return; }
-    if (vid.readyState >= 2) { activate(); return; }
+    var changed = pick();
+    if (changed) { ready = false; layer.dataset.state = 'off'; }
+    if (vid.readyState >= 2 && !changed) { activate(); return; }
     vid.preload = 'auto';
     vid.load();
   }
@@ -122,9 +136,11 @@
   if (doc.readyState === 'complete') start();
   else global.addEventListener('load', start);
 
+  /* Crossing the breakpoint swaps the cut rather than switching the layer off. */
+  var rt;
   global.addEventListener('resize', function () {
-    if (narrow.matches && ready) teardown();
-    else if (!narrow.matches && !ready && !failed) start();
+    clearTimeout(rt);
+    rt = setTimeout(function () { if (!failed) start(); }, 200);
   }, { passive: true });
 
   global.HiveEnv = {
