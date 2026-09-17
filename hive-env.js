@@ -98,11 +98,24 @@
     raf = requestAnimationFrame(loop);
     if (!ready || doc.hidden) return;
     if (!vid.paused) vid.pause();
-    target = docProgress() * vid.duration;
+    var prog = docProgress();
+    target = prog * vid.duration;
     current += (target - current) * 0.18;
     if (Math.abs(target - current) < 0.004) current = target;
     seek(current);
+
+    /* The clip's own camera moves about 24 units per pixel across a viewport
+       of scroll, which reads as a change of texture rather than as travel. A
+       slow scale on top turns it into a continuous push: the cells grow as you
+       descend, so the page feels like going deeper rather than sliding past.
+       Deliberately gentle - 18% over the whole document, not per section. */
+    var z = 1 + prog * 0.18;
+    if (Math.abs(z - lastZoom) > 0.0008) {
+      lastZoom = z;
+      vid.style.transform = 'scale(' + z.toFixed(4) + ')';
+    }
   }
+  var lastZoom = 0;
 
   doc.addEventListener('visibilitychange', function () {
     if (!doc.hidden && ready && !raf) loop();

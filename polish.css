@@ -316,9 +316,18 @@ footer{padding-bottom:max(28px, env(safe-area-inset-bottom));}
 .stpig,.tfc-link,.tfc-role,.tfc-tag,.tlbl{font-size:var(--fs-micro);}
 .eyebrow{font-size:var(--fs-label); letter-spacing:4px;}
 .tfc-role{font-size:var(--fs-label);}
+/* On a phone nothing carrying words drops below 13px. The 11px rung stays for
+   desktop labels, where reading distance is shorter and the type is tracked. */
 @media(max-width:900px){
   .aist,.ctameta,.pc,.phone-tag,.pnote,.rmq,.scw,.stpig,
-  .tfc-link,.tfc-role,.tfc-tag,.tlbl{font-size:var(--fs-label);}
+  .tfc-link,.tfc-role,.tfc-tag,.tlbl,.lpht,.lphd,
+  .sbl,.hl,.fds,.stpd,.sdsc,.tfc-back-bio,.trsub{font-size:13px !important;}
+  .eyebrow{font-size:12px !important; letter-spacing:3px;}
+  footer a,.flinks a{font-size:13px !important;}
+  /* the stragglers carry their size inline, so they need the same weight */
+  .hkl,.hbadge span,.btn-gold,.btn-out,#deckCounter,
+  .lphc p,.ctameta,.scr-note{font-size:12px !important;}
+  .btn-gold,.btn-out{letter-spacing:1.6px;}
 }
 
 /* ── section rhythm ─────────────────────────────────────────────────────*/
@@ -341,21 +350,14 @@ section.z1:not(#features):not(#screens):not(#how):not(#deck):not(#team):not(#cta
 .fds,.stpd,.lphd{color:var(--mt); opacity:1;}
 
 /* ── mobile product section ─────────────────────────────────────────────
-   Three full-height phone frames stacked vertically added about 1,300px of
-   scroll on a phone for three screenshots. A swipeable row shows the same
-   thing in one screen and reads as a product, not a slideshow of images. */
-@media(max-width:768px){
-  .scr-row{
-    display:grid; grid-auto-flow:column; grid-auto-columns:76%;
-    gap:16px; overflow-x:auto; overscroll-behavior-x:contain;
-    scroll-snap-type:x mandatory;
-    padding-inline:20px; margin-inline:-20px;
-    scrollbar-width:none;
-  }
-  .scr-row::-webkit-scrollbar{display:none;}
-  .scr-row > *{scroll-snap-align:center; min-width:0;}
-  .phone-frame{max-width:100%;}
-}
+   A swipe carousel was tried here and removed. The page's own rules pin this
+   row with three !important declarations - grid-template-columns:1fr,
+   max-width:260px, margin:0 auto - so the grid never took: the container
+   stayed 260px inside a 390px screen, the gap stayed 48px, and the first card
+   computed to zero width. On a real phone it read as clipped, broken text.
+   Overriding three !important rules to save some scroll length is not a trade
+   worth making; the vertical stack is honest and it works. */
+.phone-frame{max-width:100%;}
 
 /* ── mobile menu icon ───────────────────────────────────────────────────
    At 390px the two bars sat 5px apart and read as one thick line. */
@@ -450,12 +452,18 @@ section .wrap > .rv:first-child{position:relative;}
 section .wrap > .rv:first-child::before{
   content:""; position:absolute; z-index:-1;
   left:50%; top:50%; transform:translate(-50%,-50%);
-  /* 118% of the container overflowed the viewport at 768 and gave the
-     document a horizontal scrollbar. Capped against the viewport instead. */
-  width:min(920px, 96vw); height:calc(100% + 120px);
-  background:radial-gradient(58% 52% at 50% 50%,
-    rgba(8,5,2,.92) 0%, rgba(8,5,2,.74) 52%, rgba(8,5,2,0) 82%);
+  /* Capped against the viewport (118% gave the document a horizontal
+     scrollbar at 768) and faded out well before its own edge, otherwise the
+     falloff is clipped and the box reads as a dark rectangle. */
+  width:min(920px, 92vw); height:calc(100% + 120px);
+  background:radial-gradient(46% 46% at 50% 50%,
+    rgba(8,5,2,.88) 0%, rgba(8,5,2,.52) 46%, rgba(8,5,2,0) 74%);
   pointer-events:none;
+}
+@media(max-width:900px){
+  /* the environment layer already darkens hard here; a second scrim only
+     produced a visible box */
+  section .wrap > .rv:first-child::before{display:none;}
 }
 /* These carry inline color:var(--ml), which beats a class rule. At 12px over
    a lit plate that measured 4.6:1 — passing, but only just. */
@@ -475,6 +483,8 @@ section .wrap p.sdsc,
   width:100%; height:100%;
   object-fit:cover; object-position:center;
   opacity:0;
+  transform-origin:center center;
+  will-change:transform;
   transition:opacity 900ms var(--e-out);
 }
 /* Only shown once it can actually be scrubbed; until then the cell wall holds
