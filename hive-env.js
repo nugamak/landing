@@ -82,20 +82,21 @@
     if (ready || !scrubbable()) return;
     ready = true;
     layer.dataset.state = 'live';
-    loop();
+    ensureRunning();
   }
 
   function teardown() {
     ready = false;
     layer.dataset.state = 'off';
-    if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    /* ready=false already idles videoStep; the driver keeps running only if
+       the pointer light still needs it */
+    if (raf && !glowStep) { cancelAnimationFrame(raf); raf = 0; }
   }
 
   /* Seeking straight to the raw scroll position on every frame reads as
      chatter on a trackpad. Easing the target instead keeps the camera
      continuous while still stopping dead when the user does. */
-  function loop() {
-    raf = requestAnimationFrame(loop);
+  function videoStep() {
     if (!ready || doc.hidden) return;
     if (!vid.paused) vid.pause();
     var prog = docProgress();
@@ -117,8 +118,23 @@
   }
   var lastZoom = 0;
 
+  /* One animation frame drives everything this layer does. There used to be
+     two independent requestAnimationFrame loops - one scrubbing the video, one
+     moving the pointer light - which meant two callbacks per frame and two
+     loops that could drift out of step. The work is unchanged; it now happens
+     in a single pass. */
+  var glowStep = null;
+  function frame(now) {
+    raf = requestAnimationFrame(frame);
+    videoStep();
+    if (glowStep) glowStep(now);
+  }
+  function ensureRunning() {
+    if (!raf) raf = requestAnimationFrame(frame);
+  }
+
   doc.addEventListener('visibilitychange', function () {
-    if (!doc.hidden && ready && !raf) loop();
+    if (!doc.hidden) ensureRunning();
   });
 
   /* A phone is portrait, so object-fit:cover on the 1920x996 landscape cut
@@ -163,8 +179,7 @@
       gx = ev.clientX; gy = ev.clientY; gTarget = 1;
     }, { passive: true });
     doc.addEventListener('mouseout', function () { gTarget = 0; }, { passive: true });
-    (function paint(now) {
-      requestAnimationFrame(paint);
+    glowStep = function (now) {
       if (gTarget && now - tick > 100) {
         tick = now;
         var el = doc.elementFromPoint(gx, gy);
@@ -177,7 +192,8 @@
       if (gOn < 0.004) { glow.style.opacity = '0'; return; }
       glow.style.opacity = gOn.toFixed(3);
       glow.style.transform = 'translate3d(' + (cx - 260) + 'px,' + (cy - 260) + 'px,0)';
-    })(0);
+    };
+    ensureRunning();
   }
 
   global.addEventListener('resize', function () {

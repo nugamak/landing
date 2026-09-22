@@ -533,3 +533,13 @@ section .wrap p.sdsc,
     rgba(255,196,104,.30), rgba(245,168,37,.12) 42%, rgba(245,168,37,0) 72%);
 }
 @media(prefers-reduced-motion:reduce){ .hive-glow{display:none;} }
+
+/* ── hero height on iOS Safari ─────────────────────────────────────────
+   svh at every width, not only below 900px. On an iPad in landscape the old
+   rule fell back to 100vh, which Safari measures with its toolbar hidden, so
+   the bottom of the hero - the CTA and the scroll cue - started out under the
+   toolbar. svh is the height with the toolbar showing, and it does not change
+   as the toolbar hides; dvh would, resizing the hero mid-scroll and shifting
+   the scroll progress that drives the environment video. vh stays first as
+   the fallback for browsers without svh. */
+#hero{height:100vh; height:100svh;}
