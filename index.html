@@ -27,7 +27,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{background:#080502;color:#F0E6C8;font-family:"Exo 2",sans-serif;overflow-x:hidden;}
 body.cust-cur{cursor:none;}
-#globalHive{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+
 :root{--g1:#F5A825;--g2:#E8943A;--g3:#FFD166;--g4:#C97A10;--dk:#080502;--dk2:#0F0A04;--dk3:#1A1006;--mt:#8A7A52;--txt:#F0E6C8;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(245,168,37,.25);border-radius:2px;}
 @media(pointer:coarse){body{cursor:auto;}#CUR,#CURL{display:none;}}
@@ -183,7 +183,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;padding:0 52px;d
 .aic:hover{background:rgba(16,9,2,.9);border-color:rgba(245,168,37,.5);}
 .airow{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .ainm{font-family:"Orbitron",sans-serif;font-size:12px;font-weight:700;color:var(--g3);}
-.aist{display:flex;align-items:center;gap:5px;font-family:"Orbitron",sans-serif;font-size:11px;letter-spacing:2px;color:var(--mt);}
 .dotl{width:7px;height:7px;border-radius:50%;display:inline-block;flex-shrink:0;}
 .dlive{background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.7);}
 .dsoon{background:#60a5fa;box-shadow:0 0 8px rgba(96,165,250,.6);}
@@ -218,9 +217,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;padding:0 52px;d
 .tstrip{padding:30px 52px;border-top:1px solid rgba(245,168,37,.12);border-bottom:1px solid rgba(245,168,37,.12);background:rgba(10,6,2,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:relative;z-index:1;}
 .tinn{max-width:1140px;margin:0 auto;text-align:center;}
 .tlbl{font-family:"Orbitron",sans-serif;font-size:11px;letter-spacing:4px;color:var(--mt);margin-bottom:16px;text-transform:uppercase;}
-.tpls{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;}
-.tpl{padding:6px 14px;background:rgba(245,168,37,.05);border:1px solid rgba(245,168,37,.12);font-size:11px;color:var(--mt);font-family:"Orbitron",sans-serif;letter-spacing:1px;transition:all .3s;}
-.tpl:hover{color:var(--g1);border-color:rgba(245,168,37,.4);}
 #cta{padding:140px 52px;text-align:center;position:relative;overflow:hidden;background:transparent;z-index:1;}
 #cta::before{content:"";position:absolute;width:900px;height:900px;background:radial-gradient(circle,rgba(245,168,37,.08) 0%,transparent 67%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
 .ctabee{font-size:56px;display:block;margin:0 auto 26px;animation:floaty 4s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(245,168,37,.6));}

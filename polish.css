@@ -107,7 +107,7 @@ p,.hdesc,.fds,.sdsc{text-wrap:pretty;}
 /* ── touch targets ──────────────────────────────────────────────────────*/
 .lb{min-height:44px; min-width:52px; padding:0 16px;}
 @media(pointer:fine){ .lb{min-height:36px;} }
-.flinks a,.ctameta a{display:inline-block; padding-block:10px;}
+.ctameta a{display:inline-block; padding-block:10px;}
 .tfc-link{padding:10px 14px;}
 button,a,input,select,textarea,summary{touch-action:manipulation;}
 html{-webkit-tap-highlight-color:rgba(245,168,37,.18);}
@@ -121,7 +121,7 @@ html{-webkit-tap-highlight-color:rgba(245,168,37,.18);}
 .btn-out{transition:background-color var(--t-base) var(--e-out),
                     border-color var(--t-base) var(--e-out),
                     color var(--t-base) var(--e-out);}
-.lb,.deck-btn{transition:background-color var(--t-fast) var(--e-out),
+.lb{transition:background-color var(--t-fast) var(--e-out),
                           color var(--t-fast) var(--e-out),
                           border-color var(--t-fast) var(--e-out);}
 .phone-frame{transition:transform 320ms var(--e-out), box-shadow 320ms var(--e-out);}
@@ -151,9 +151,6 @@ img[width][height]{max-width:100%;}
   background:var(--g1);
   transition:transform var(--t-base) var(--e-out);}
 .nav-toggle span:first-child{top:19px;}
-.nav-toggle span:last-child{top:24px;}
-.nav-toggle[aria-expanded="true"] span:first-child{transform:translateY(2.5px) rotate(45deg);}
-.nav-toggle[aria-expanded="true"] span:last-child{transform:translateY(-2.5px) rotate(-45deg);}
 .nav-panel{
   position:fixed; top:64px; left:0; right:0; z-index:499;
   background:rgba(6,4,2,.97);
@@ -171,7 +168,7 @@ img[width][height]{max-width:100%;}
 }
 .nav-panel a:last-child{border-bottom:0;}
 .nav-panel a:hover,.nav-panel a:focus-visible{color:var(--g1);}
-@media(max-width:900px){ .nav-toggle{display:grid;} }
+@media(max-width:900px){ }
 
 /* ── safe areas ─────────────────────────────────────────────────────────*/
 nav{padding-left:max(52px, env(safe-area-inset-left));
@@ -197,9 +194,6 @@ footer{padding-bottom:max(28px, env(safe-area-inset-bottom));}
 }
 
 /* Remaining transition:all declarations, made explicit. */
-.tpl{transition:color var(--t-base) var(--e-out),
-                border-color var(--t-base) var(--e-out),
-                background-color var(--t-base) var(--e-out);}
 .card-glow-wrap,.fcard{transition:border-color var(--t-base) var(--e-out),
                                    background-color var(--t-base) var(--e-out),
                                    transform var(--t-base) var(--e-out);}
@@ -309,19 +303,15 @@ footer{padding-bottom:max(28px, env(safe-area-inset-bottom));}
   min-height:var(--ctl-h); align-items:center;
   padding:0 22px; font-size:var(--fs-micro);
 }
-.deck-btn{min-height:var(--ctl-h-sm); display:inline-flex; align-items:center;}
 
-/* ── type floor: nothing below 11px, nothing below 12px on touch ───────*/
-.aist,.ctameta,.eyebrow,.hl,.lb,.pc,.phone-tag,.pnote,.rmq,.scw,
-.stpig,.tfc-link,.tfc-role,.tfc-tag,.tlbl{font-size:var(--fs-micro);}
+/* ── type floor: nothing below 11px,nothing below 12px on touch ───────*/
+.ctameta,.hl,.lb,.pc,.phone-tag,.pnote,.rmq,.scw,.stpig,.tfc-link,.tfc-tag,.tlbl{font-size:var(--fs-micro);}
 .eyebrow{font-size:var(--fs-label); letter-spacing:4px;}
 .tfc-role{font-size:var(--fs-label);}
 /* On a phone nothing carrying words drops below 13px. The 11px rung stays for
    desktop labels, where reading distance is shorter and the type is tracked. */
 @media(max-width:900px){
-  .aist,.ctameta,.pc,.phone-tag,.pnote,.rmq,.scw,.stpig,
-  .tfc-link,.tfc-role,.tfc-tag,.tlbl,.lpht,.lphd,
-  .sbl,.hl,.fds,.stpd,.sdsc,.tfc-back-bio,.trsub{font-size:13px !important;}
+  .pc,.phone-tag,.pnote,.rmq,.scw,.stpig,.tfc-link,.tfc-role,.tfc-tag,.tlbl,.lpht,.lphd,.sbl,.hl,.fds,.stpd,.sdsc,.tfc-back-bio,.trsub{font-size:13px !important;}
   .eyebrow{font-size:12px !important; letter-spacing:3px;}
   footer a,.flinks a{font-size:13px !important;}
   /* the stragglers carry their size inline, so they need the same weight */
